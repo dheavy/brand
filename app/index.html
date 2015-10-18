@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -19,24 +19,47 @@
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700|Asap' rel='stylesheet' type='text/css'>
 
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand mp-navbar-brand" href="#"></a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand mp-navbar-brand" href="#">myPleasure</a>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="navbar-link"><a href="#">Blog</a></li>
             <li class="navbar-link"><a href="#">Contact</a></li>
           </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container mp-content center-block">
+      <div class="row">
+        <h1 class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Binge watching made easy</h1>
+        <h2 class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Bookmark your favorite videos online. Watch everyone else's.</h2>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mp-form">
+          <form class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="email">Email address</label>
+              <input type="email" class="form-control input-lg" id="email" placeholder="Email">
+            </div>
+            <button type="submit" class="btn btn-default btn-lg mp-btn">Reserve my account</button>
+          </form>
         </div>
       </div>
-    </nav>
-    <div class="container mp-content">
-
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -49,14 +72,16 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-    <!-- build:js scripts/plugins.js -->
-    <script type="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <!-- endbuild -->
-
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
   </body>
 </html>

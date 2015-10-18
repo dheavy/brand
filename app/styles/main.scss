@@ -5,17 +5,36 @@ $icon-font-path: '../fonts/';
 @import "./_mixins.scss";
 // endbower
 
-$navbar-default-link-color: white;
-$navbar-default-link-hover-color: white;
-$navbar-default-link-hover-bg: white;
+$mp-blue: #648be3;
+$mp-dark-blue: #4466b2;
+$mp-dark-grey: #656565;
+
+html, body {
+  height: 100%;
+}
 
 body {
-  background: url('../images/000_mypleasure-landing.jpg') top center no-repeat;
+  background-color: black;
+  font-family: 'Asap', Verdana, sans-serif;
+  color: white;
+}
+
+h1 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  @include font-size(80px);
+}
+
+h2 {
+  margin-top: 5px;
+  @include font-size(30px);
 }
 
 .mp-content {
-  padding-top: 70px;
   padding-bottom: 20px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 .navbar-default {
@@ -38,16 +57,53 @@ body {
   }
 }
 
-
 .navbar-link {
   margin-top: 7.5px;
+}
+
+.navbar-toggle {
+  margin-top: 15px;
+}
+
+.navbar-default {
+  .navbar-toggle {
+    .icon-bar {
+      background-color: white;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $mp-dark-grey;
+      border-color: $mp-dark-grey;
+    }
+  }
 }
 
 .mp-navbar-brand {
   position: relative;
   display: block;
-  width: 152px;
+  width: 180px;
   background-repeat: no-repeat;
+  text-indent: -999em;
   @include background-image('mypleasure-logo');
-  background-position: 0 25px;
+  background-position: center 25px;
+}
+
+.mp-btn {
+  background-color: $mp-blue;
+  border-color: $mp-blue;
+  color: white;
+  font-weight: bold;
+  transition: background-color 500ms;
+
+  &:hover,
+  &:focus {
+    background-color: $mp-dark-blue;
+    border-color: $mp-dark-blue;
+    color: white;
+  }
+}
+
+.mp-form {
+  top: 20px;
 }
