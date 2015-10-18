@@ -2,17 +2,52 @@ $icon-font-path: '../fonts/';
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "./_mixins.scss";
 // endbower
 
-/* Space out content a bit */
+$navbar-default-link-color: white;
+$navbar-default-link-hover-color: white;
+$navbar-default-link-hover-bg: white;
+
 body {
-  padding-top: 20px;
+  background: url('../images/000_mypleasure-landing.jpg') top center no-repeat;
+}
+
+.mp-content {
+  padding-top: 70px;
   padding-bottom: 20px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.navbar-default {
+  .navbar-nav {
+    & > li {
+      & > a {
+        transition: color 500ms;
+        color: white;
+
+        &:hover {
+          color: #ACACAC;
+        }
+      }
+    }
   }
+}
+
+
+.navbar-link {
+  margin-top: 7.5px;
+}
+
+.mp-navbar-brand {
+  position: relative;
+  display: block;
+  width: 152px;
+  background-repeat: no-repeat;
+  @include background-image('mypleasure-logo');
+  background-position: 0 25px;
 }
