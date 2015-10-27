@@ -1,8 +1,8 @@
 $icon-font-path: '../fonts/';
+@import '_mixins';
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-@import "./_mixins.scss";
 // endbower
 
 $mp-blue: #648be3;
