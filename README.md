@@ -1,2 +1,2 @@
-myPleasure Landing Page
+mypleasure landing page
 =======================
