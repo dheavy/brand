@@ -1,5 +1,6 @@
+'use strict';
+
 $(() => {
-  'use strict';
 
   let $window = $(window),
       $content = $('.mp-content');
