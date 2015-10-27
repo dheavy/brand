@@ -1,8 +1,8 @@
 $icon-font-path: '../fonts/';
+@import '_mixins';
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-@import "./_mixins.scss";
 // endbower
 
 $mp-blue: #648be3;
@@ -107,6 +107,7 @@ h2 {
 .mp-form {
   top: 20px;
 }
+<<<<<<< 812f28b5d4c6d7542ae8a3b66de3c0d15faa5bde
 
 #mp-background {
   position: fixed;
@@ -122,3 +123,5 @@ h2 {
   background-color: black;
   background-size: cover;
 }
+=======
+>>>>>>> Import mixins into main style file.
