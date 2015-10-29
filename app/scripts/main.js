@@ -1,12 +1,12 @@
 'use strict';
 
-$(() => {
+$(function () {
 
-  let $window = $(window),
+  var $window = $(window),
       $content = $('.mp-content');
 
   function resize() {
-    let windowHeight = $window.height(),
+    var windowHeight = $window.height(),
         contentHeight = $content.height(),
         yPos = (windowHeight / 2 - contentHeight / 2);
 
