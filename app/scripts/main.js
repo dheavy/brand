@@ -102,10 +102,10 @@ $(function () {
     mixpanel.track('User clicked to join Beta list.');
   }
 
-  setPoster(generatePosterUrl());
-
   if (!$('html').hasClass('mobile')) {
     setVideo();
+  } else {
+    setPoster(generatePosterUrl());
   }
 
   $window.resize(resize);
