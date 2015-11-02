@@ -96,6 +96,7 @@ $(function () {
 
   function hideForm() {
     $form.fadeOut();
+    mixpanel.track('User clicked to join Beta list.')
   }
 
   function isValidEmail(email) {
