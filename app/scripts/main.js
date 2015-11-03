@@ -113,5 +113,6 @@ $(function () {
 
   $content.css('opacity', 1);
 
+  mixpanel.track('User lands on page.');
   ajaxForm($form, $('.mp-msg-info'));
 });
