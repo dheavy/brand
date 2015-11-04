@@ -13,10 +13,10 @@ $fallback-extension: 'png' !default;
 $retina-suffix: '@2x';
 @mixin background-image($name, $size:false){
   background-image: url(#{$image-path}/#{$name}.png);
-  /* background-image: url(#{$image-path}/#{$name}.svg);
+  background-image: url(#{$image-path}/#{$name}.svg);
   @if($size){
     background-size: $size;
-  } */
+  }
   .no-svg &{
     background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
 
