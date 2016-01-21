@@ -15,6 +15,7 @@
   "babel": {
     "presets": [
       "es2015",
+      "stage-0",
       "react"
     ]
   },
@@ -27,29 +28,31 @@
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
     "chai": "^3.2.0",
     "chai-immutable": "^1.3.0",
     "css-loader": "^0.17.0",
     "jsdom": "^6.5.1",
     "mocha": "^2.3.0",
+    "node-sass": "^3.4.2",
     "react-addons-test-utils": "^0.14.6",
     "react-hot-loader": "^1.3.0",
-    "style-loader": "^0.12.3",
-    "webpack": "^1.12.0",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.12.4",
+    "webpack": "^1.12.11",
     "webpack-dev-server": "^1.10.1"
   },
   "dependencies": {
-    "classnames": "^2.1.3",
-    "history": "^1.17.0",
-    "immutable": "^3.7.5",
+    "es6-promise": "^3.0.2",
+    "immutable": "^3.7.6",
+    "isomorphic-fetch": "^2.2.1",
     "object-assign": "^4.0.1",
     "react": "^0.14.0",
     "react-addons-pure-render-mixin": "^0.14.0",
     "react-dom": "^0.14.0",
+    "react-immutable-proptypes": "^1.5.1",
     "react-redux": "^3.1.2",
-    "react-router": "^1.0.0-rc3",
     "redux": "^2.0.0",
-    "socket.io-client": "^1.4.4",
-    "uuid": "^2.0.1"
+    "redux-thunk": "^1.0.3"
   }
 }
