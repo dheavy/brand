@@ -1,16 +1,21 @@
-import PureComponent from './PureComponent';
+/**
+ * MyPleasure | "brand"
+ * --------------------
+ * Stateless, functional component for fullscreen video sections.
+ */
+
 import React, {PropTypes} from 'react';
 
-export default class VideoScreen extends PureComponent {
-  static propTypes = {
-    video: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-    cta: PropTypes.string.isRequired,
-    next: PropTypes.string
-  };
+const VideoScreen = props => {
+  return (
+    <section className="screen video">VideoScreen</section>
+  )
+};
 
-  render() {
-    return <div>VideoScreen</div>
-  }
-}
+VideoScreen.propTypes = {
+  video: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired,
+  next: PropTypes.string
+};

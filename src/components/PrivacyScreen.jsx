@@ -1,14 +1,21 @@
-import PureComponent from './PureComponent';
+/**
+ * MyPleasure | "brand"
+ * --------------------
+ * Stateless, functional component for the "privacy" screen.
+ */
+
 import React, {PropTypes} from 'react';
 
-export default class PrivacyScreen extends PureComponent {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-    cta: PropTypes.string.isRequired
-  };
+const PrivacyScreen = props => {
+  return(
+    <div>PrivacyScreen</div>
+  );
+};
 
-  render() {
-    return <div>PrivacyScreen</div>
-  }
-}
+PrivacyScreen.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  cta: PropTypes.string.isRequired
+};
+
+export default PrivacyScreen;
