@@ -6,8 +6,8 @@
 
 import React, {PropTypes} from 'react';
 
-const PrivacyScreen = props => {
-  return(
+const PrivacyScreen = ({title, subtitle, cta}) => {
+  return (
     <div>PrivacyScreen</div>
   );
 };
