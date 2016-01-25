@@ -4,9 +4,30 @@
  * Main reducer.
  */
 
-import {combineReducers} from 'redux';
-import landingPage from './landingPage';
+import {
+  TOTAL_SECTIONS,
+  NEXT_SCREEN,
+  SUBMIT_EMAIL
+} from '../constants/ActionTypes';
 
-const reducer = combineReducers({landingPage});
+import {MAX_SECTIONS} from '../constants/Sections';
 
-export default reducer;
+import {Map} from 'immutable';
+
+const initialState = Map({
+  currentSection: 0,
+  maxSections: MAX_SECTIONS
+});
+
+export default function landingPage(state = initialState, action) {
+  switch (action.type) {
+    case NEXT_SCREEN:
+      return state.merge(Map({
+        currentSection: Math.min(action.currentSection, MAX_SECTIONS)
+      }));
+
+    default:
+      return state;
+  }
+}
+

@@ -6,6 +6,7 @@
 
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
+import {nextScreen} from './actions';
 import App from './containers/App';
 import {render} from 'react-dom';
 import React from 'react';
@@ -21,5 +22,5 @@ render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('mp')
+  document.getElementById('root')
 );
