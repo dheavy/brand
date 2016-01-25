@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 import {List} from 'immutable';
 
 export default class App extends Component {
-  componentDidMount() {
+  componentWillMount() {
     window.addEventListener('scroll', this.windowScrollHandler.bind(this));
   }
 
