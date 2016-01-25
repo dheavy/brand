@@ -4,9 +4,9 @@
  * Main reducer.
  */
 
-import {combineReducer} from 'redux';
+import {combineReducers} from 'redux';
 import landingPage from './landingPage';
 
-const reducer = combineReducer({landingPage});
+const reducer = combineReducers({landingPage});
 
 export default reducer;
