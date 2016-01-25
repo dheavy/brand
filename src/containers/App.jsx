@@ -1,3 +1,9 @@
+/**
+ * MyPleasure | "brand"
+ * --------------------
+ * Components container.
+ */
+
 import CurrentScreenIndicator from '../components/CurrentScreenIndicator';
 import ProvidersScreen from '../components/ProvidersScreen';
 import PrivacyScreen from '../components/PrivacyScreen';
