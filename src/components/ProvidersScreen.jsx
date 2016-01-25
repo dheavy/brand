@@ -1,7 +1,7 @@
 /**
  * MyPleasure | "brand"
  * --------------------
- * "Providers" screen.
+ * Stateless, functional component for providers sections.
  */
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
