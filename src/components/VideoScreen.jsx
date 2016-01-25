@@ -6,10 +6,10 @@
 
 import React, {PropTypes} from 'react';
 
-const VideoScreen = props => {
+const VideoScreen = ({video, title, subtitle, cta, next = null}) => {
   return (
     <section className="screen video">VideoScreen</section>
-  )
+  );
 };
 
 VideoScreen.propTypes = {
@@ -19,3 +19,5 @@ VideoScreen.propTypes = {
   cta: PropTypes.string.isRequired,
   next: PropTypes.string
 };
+
+export default VideoScreen;
