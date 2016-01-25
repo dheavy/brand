@@ -1,21 +1,24 @@
-import {createStore, compose, applyMiddleware} from 'redux';
+/**
+ * MyPleasure | "brand"
+ * --------------------
+ * App entry point.
+ */
+import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
-import App from './components/App';
-import ReactDOM from 'react-dom';
-import reducer from './reducer';
-import thunk from 'redux-thunk';
+import App from './containers/App';
+import {render} from 'react-dom';
 import React from 'react';
 
-const storeWithMiddleware = compose(
-  window.devToolsExtension ? window.devToolsExtension() : f => f,
-  applyMiddleware(thunk)
-)(createStore);
+require('!style!css!sass!../node_modules/normalize.scss/normalize.scss');
+require('!style!css!sass!./styles/definitions.scss');
+require('!style!css!sass!./styles/foundation.scss');
+require('!style!css!sass!./styles/mypleasure.scss');
 
-const store = storeWithMiddleware(reducer);
+const store = configureStore();
 
-ReactDOM.render(
+render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('mp')
 );
