@@ -1,10 +1,12 @@
-Unstaged changes after reset:
-D	dist/images/000_mypleasure-landing.jpg
-M	dist/index.html
-M	package.json
-D	src/components/App.jsx
-M	src/components/PrivacyScreen.jsx
-M	src/components/VideoScreen.jsx
-M	src/index.jsx
-M	src/reducers/index.js
-M	webpack.config.js
+/**
+ * MyPleasure | "brand"
+ * --------------------
+ * Main reducer.
+ */
+
+import {combineReducer} from 'redux';
+import landingPage from './landingPage';
+
+const reducer = combineReducer({landingPage});
+
+export default reducer;
