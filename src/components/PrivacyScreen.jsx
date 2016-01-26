@@ -4,11 +4,12 @@
  * Stateless, functional component for the "privacy" screen.
  */
 
+import MotionComponent from './MotionComponent';
 import React, {PropTypes} from 'react';
 
-const PrivacyScreen = ({title, subtitle, cta}) => {
+const PrivacyScreen = props => {
   return (
-    <div>PrivacyScreen</div>
+    <div style={props.style}>PrivacyScreen</div>
   );
 };
 
@@ -18,4 +19,4 @@ PrivacyScreen.propTypes = {
   cta: PropTypes.string.isRequired
 };
 
-export default PrivacyScreen;
+export default MotionComponent(PrivacyScreen);

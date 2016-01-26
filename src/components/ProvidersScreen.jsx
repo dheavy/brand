@@ -5,11 +5,12 @@
  */
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import MotionComponent from './MotionComponent';
 import React, {PropTypes} from 'react';
 
-const ProvidersScreen = ({title, subtitle, providersNormal, providersNaughty, cta}) => {
+const ProvidersScreen = props => {
   return (
-    <div>ProvidersScreen</div>
+    <div style={props.style}>ProvidersScreen</div>
   );
 };
 
@@ -21,4 +22,4 @@ ProvidersScreen.propTypes = {
   cta: PropTypes.string.isRequired
 };
 
-export default ProvidersScreen;
+export default MotionComponent(ProvidersScreen);

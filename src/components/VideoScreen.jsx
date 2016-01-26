@@ -4,11 +4,13 @@
  * Stateless, functional component for fullscreen video sections.
  */
 
+import MotionComponent from './MotionComponent';
+import {Motion, spring} from 'react-motion';
 import React, {PropTypes} from 'react';
 
-const VideoScreen = ({video, title, subtitle, cta, next = null}) => {
+const VideoScreen = props => {
   return (
-    <section className="screen video">VideoScreen</section>
+    <section className="screen video" style={props.style}>VideoScreen</section>
   );
 };
 
@@ -20,4 +22,4 @@ VideoScreen.propTypes = {
   next: PropTypes.string
 };
 
-export default VideoScreen;
+export default MotionComponent(VideoScreen);
