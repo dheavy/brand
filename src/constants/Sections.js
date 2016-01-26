@@ -1,8 +1,9 @@
-import {Map} from 'immutable';
+import {Map, Set} from 'immutable';
 
 export const MAX_SECTIONS = 3;
 export const INITIAL_STATE = Map({
   currentSection: 0,
   maxSections: MAX_SECTIONS,
-  sections: null
+  sections: null,
+  viewed: Set()
 });
