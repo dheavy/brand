@@ -2,6 +2,7 @@
   "sections": {
     "VideoScreenStart": {
       "id": 0,
+      "video": "http://example.com/video",
       "title": "VideoScreen 1",
       "subtitle": "Subtitle for VideoScreen 1",
       "cta": "CTA for VideoScreen 1",
@@ -26,9 +27,12 @@
 
     "VideoScreenEnd": {
       "id": 3,
+      "video": "http://example.com/video",
       "title": "VideoScreen 2",
       "subtitle": "Subtitle for VideoScreen 2",
       "cta": "CTA for VideoScreen 2"
-    }
+    },
+
+    "ThankYou": {}
   }
 }
