@@ -18,7 +18,8 @@ import {List} from 'immutable';
 function mapStateToProps(state) {
   return {
     currentSection: state.get('currentSection'),
-    maxSections: state.get('maxSections')
+    maxSections: state.get('maxSections'),
+    sections: state.get('sections')
   }
 }
 
@@ -28,15 +29,23 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+function privacyScreenProps(props) {
+  const providersNormal = List.of(props.providersNormal);
+  const providersNaughty = List.of(props.providersNaughty);
+  return Object.assign({}, props, {providersNormal, providersNaughty});
+}
+
 class App extends Component {
   static propTypes = {
     currentSection: PropTypes.number.isRequired,
     maxSections: PropTypes.number.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    sections: PropTypes.object.isRequired
   };
 
+  // Debounced mousewheel user action
+  // triggers NEXT_SCREEN Redux action.
   componentWillMount() {
-    // Debounce mouse wheel event for performance.
     window.addEventListener('mousewheel', (debounce((e) => {
       e.preventDefault();
       if (e.deltaX < 0 || e.deltaX === -0) {
@@ -46,46 +55,21 @@ class App extends Component {
   }
 
   render() {
-    const {actions: {nextScreen, submitEmail}} = this.props;
+    const {
+      actions: {nextScreen, submitEmail},
+      sections
+    } = this.props;
 
     return (
       <main>
         <section>
-          <VideoScreen
-            id={0}
-            video="VideoScreen video"
-            title="VideoScreen title"
-            subtitle="VideoScreen subtitle"
-            cta="VideoScreen CTA"
-            next="VideoScreen next button label"
-          />
-
-          <ProvidersScreen
-            id={1}
-            title="ProvidersScreen title"
-            subtitle="ProvidersScreen subtitle"
-            cta="ProvidersScreen CTA"
-            providersNormal={List()}
-            providersNaughty={List()}
-          />
-
-          <PrivacyScreen
-            id={2}
-            title="PrivacyScreen title"
-            subtitle="PrivacyScreen subtitle"
-            cta="PrivacyScreen CTA"
-          />
-
-          <VideoScreen
-            id={3}
-            video="VideoScreen video"
-            title="VideoScreen title"
-            subtitle="VideoScreen subtitle"
-            cta="VideoScreen CTA"
-          />
+          <VideoScreen {...sections.VideoScreenEnd} />
+          <ProvidersScreen {...sections.ProvidersScreen} />
+          <PrivacyScreen {...privacyScreenProps(sections.PrivacyScreen)} />
+          <VideoScreen {...sections.VideoScreenStart} />
         </section>
         <nav>
-          <CurrentScreenIndicator />
+          <CurrentScreenIndicator currentSection={this.props.currentSection} />
         </nav>
       </main>
     );
