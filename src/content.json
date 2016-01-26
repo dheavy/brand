@@ -1,0 +1,34 @@
+{
+  "sections": {
+    "VideoScreenStart": {
+      "id": 0,
+      "title": "VideoScreen 1",
+      "subtitle": "Subtitle for VideoScreen 1",
+      "cta": "CTA for VideoScreen 1",
+      "next": "More..."
+    },
+
+    "PrivacyScreen": {
+      "id": 1,
+      "title": "PrivacyScreen",
+      "subtitle": "Subtitle for PrivacyScreen",
+      "cta": "CTA for PrivacyScreen"
+    },
+
+    "ProvidersScreen": {
+      "id": 2,
+      "title": "ProvidersScreen",
+      "subtitle": "Subtitle for ProvidersScreen",
+      "cta": "CTA for ProvidersScreen",
+      "providersNormal": ["p1", "p2"],
+      "providersNaughty": ["p1", "p2"]
+    },
+
+    "VideoScreenEnd": {
+      "id": 3,
+      "title": "VideoScreen 2",
+      "subtitle": "Subtitle for VideoScreen 2",
+      "cta": "CTA for VideoScreen 2"
+    }
+  }
+}
