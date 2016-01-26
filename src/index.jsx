@@ -9,14 +9,21 @@ import {Provider} from 'react-redux';
 import {nextScreen} from './actions';
 import App from './containers/App';
 import {render} from 'react-dom';
+import {Map} from 'immutable';
 import React from 'react';
+
+import {
+  MAX_SECTIONS,
+  INITIAL_STATE
+} from './constants/Sections';
 
 require('!style!css!sass!../node_modules/normalize.scss/normalize.scss');
 require('!style!css!sass!./styles/definitions.scss');
 require('!style!css!sass!./styles/foundation.scss');
 require('!style!css!sass!./styles/mypleasure.scss');
 
-const store = configureStore();
+const content = require('./content.json');
+const store = configureStore(INITIAL_STATE, Map(content));
 
 render(
   <Provider store={store}>

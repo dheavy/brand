@@ -10,16 +10,15 @@ import {
   SUBMIT_EMAIL
 } from '../constants/ActionTypes';
 
-import {MAX_SECTIONS} from '../constants/Sections';
+import {
+  MAX_SECTIONS,
+  INITIAL_STATE
+} from '../constants/Sections';
 
 import {Map} from 'immutable';
 
-const initialState = Map({
-  currentSection: 0,
-  maxSections: MAX_SECTIONS
-});
 
-export default function landingPage(state = initialState, action) {
+export default function landingPage(state = INITIAL_STATE, action) {
   switch (action.type) {
     case NEXT_SCREEN:
       return state.merge(Map({
