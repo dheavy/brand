@@ -24,14 +24,16 @@ import React, {Component} from 'react';
 // contains 'id' of current component.
 const animStyleConditions = props => {
   return {
-    y: spring(props.viewed.includes(props.id) ? -100 : 0)
+    y: spring(props.viewed.includes(props.id) ? -100 : 0),
+    o: spring(props.viewed.includes(props.id) ? 0 : 1)
   };
 }
 
-const animStyleProps = y => {
+const animStyleProps = (y, o) => {
   return {
     WebkitTransform: `translate3d(0, ${y}%, 0)`,
-    transform: `translate3d(0, ${y}%, 0)`
+    transform: `translate3d(0, ${y}%, 0)`,
+    opacity: `${o}`
   };
 }
 
@@ -39,8 +41,8 @@ const MotionComponent = (Screen) => class extends Component {
   render() {
     return (
       <Motion style={animStyleConditions(this.props)}>
-        {({y}) =>
-          <Screen {...this.props} style={animStyleProps(y)} />
+        {({y, o}) =>
+          <Screen {...this.props} style={animStyleProps(y, o)} />
         }
       </Motion>
     );
