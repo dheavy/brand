@@ -9,30 +9,103 @@ html, body {
   width: 100%;
   height: 100%;
   background-color: red;
+  input, .button {
+    @include prefix(border-radius, 5px);
+    @include font-asap();
+  }
+  .button {
+    font-weight: 700;
+    background-color: $color-mp-blue;
 
-  .center {
-    @include center();
+    &:hover {
+      background-color: $color-mp-blue-hover;
+    }
+  }
+
+  .center-full {
+    @include center(100%);
   }
 
   .screen {
     position: absolute;
+    overflow: hidden;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 
+    h1 {
+      @include font-montserrat();
+      @include font-size(50px);
+      font-weight: 700;
+    }
+
+    h2 {
+      @include font-asap();
+      @include font-size(18px);
+      font-weight: 700;
+    }
+
+    .logo {
+      position: absolute;
+      top: 1rem;
+      left: 4rem;
+      display: block;
+      width: 180px;
+      background-repeat: no-repeat;
+      text-indent: -999em;
+      @include background-image('mypleasure-logo');
+      background-position: 0;
+    }
+
     &.video {
-      background: yellow;
+      h1, h2 {
+        color: #FFFFFF;
+      }
 
       .title, .subtitle, .btn-next {
         text-align: center;
+      }
+
+      .input-group {
+        margin-left: 10px;
+        margin-top: 2rem;
+      }
+
+      .input-group-field {
+        margin-left: -20px;
+      }
+
+      .button {
+        margin-left: -7px;
       }
 
       .btn-next {
         bottom: 0;
         position: absolute;
         width: 100%;
+        height: 40px;
         cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
+        line-height: 40px;
+        @include font-asap();
+        @include font-size(12px);
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+
+      video {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+
+        @media only screen and (max-width: 40em) {
+          width: auto;
+          height: 100%;
+          left: -50%;
+        }
       }
     }
 

@@ -9,6 +9,7 @@ import FullscreenVideo from './FullscreenVideo';
 import MotionComponent from './MotionComponent';
 import {Motion, spring} from 'react-motion';
 import React, {PropTypes} from 'react';
+import Logo from './Logo';
 
 const checkIfStart = (viewed, id) => {
   return (viewed.size === 0 && id === 0) || (viewed.contains(id));
@@ -25,10 +26,20 @@ const VideoScreen = props => {
           isMobile={props.isMobile}
         />
       }
-      <div className="logo">MyPleasure</div>
-      <div className="row center">
-        <h1 className="column small-centered small-1 medium-20 large-20 title">{props.title}</h1>
-        <h2 className="column small-centered small-1 medium-20 large-20 subtitle">{props.subtitle}</h2>
+      <Logo />
+      <div className="row center-full">
+        <h1 className="column small-centered small-20 medium-20 large-20 title">{props.title}</h1>
+        <h2 className="column small-centered small-20 medium-20 large-20 subtitle">{props.subtitle}</h2>
+        <div className="column small-centered small-20 medium-20 large-20">
+          <form className="column small-centered small-6 medium-6 large-6">
+            <div className="input-group">
+              <input className="input-group-field" type="email" placeholder="Email" />
+              <div className="input-group-button">
+                <input type="submit" className="button" value={props.cta} />
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
       {props.next &&
       <div className="btn-next">

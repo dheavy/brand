@@ -2,14 +2,15 @@
  *  Main colors
  */
 $color-mp-blue: #648be3;
+$color-mp-blue-hover: #253961;
 $color-light-lavender: #ededfe;
 $color-dark-blue: #3a5083;
 
 /**
  *  Typography
  */
-@mixin font-droid() {
-  font-family: 'Droid Sans', sans-serif;
+@mixin font-montserrat() {
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 @mixin font-asap() {
@@ -48,7 +49,7 @@ $color-dark-blue: #3a5083;
 /**
  *  Images
  */
-$image-path: '../images' !default;
+$image-path: '../../dist/images' !default;
 $fallback-extension: 'png' !default;
 $retina-suffix: '@2x';
 @mixin background-image($name, $size:false){

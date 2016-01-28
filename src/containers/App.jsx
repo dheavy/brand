@@ -21,7 +21,8 @@ function mapStateToProps(state) {
     currentSection: state.get('currentSection'),
     maxSections: state.get('maxSections'),
     sections: state.get('sections'),
-    viewed: state.get('viewed')
+    viewed: state.get('viewed'),
+    isMobile: state.get('isMobile')
   }
 }
 
@@ -34,7 +35,7 @@ function mapDispatchToProps(dispatch) {
 // Merge props to add the 'viewed' value
 // (i.e. array referencing which screens have been viewed
 // and should be removed).
-function screenProps(props, viewed) {
+function screenProps(props, viewed, isMobile) {
   return Object.assign({}, props, {viewed})
 }
 
@@ -47,10 +48,11 @@ function providerScreenProps(props) {
 }
 
 // Merge props for 'Video' screen, to transform array
-// of posters into immutable list.
-function videoScreenProps(props) {
+// of posters into immutable list, and tell if this is a mobile
+// device or not (influences whether the video is displayed).
+function videoScreenProps(props, isMobile) {
   const posters = List(props.posters);
-  return Object.assign({}, props, {posters});
+  return Object.assign({}, props, {posters, isMobile});
 }
 
 class App extends Component {
@@ -86,16 +88,17 @@ class App extends Component {
     const {
       actions: {nextScreen, submitEmail},
       sections,
-      viewed
+      viewed,
+      isMobile
     } = this.props;
 
     return (
       <main>
         <section>
-          <VideoScreen {...screenProps(videoScreenProps(sections.VideoScreenEnd), viewed)} />
+          <VideoScreen {...screenProps(videoScreenProps(sections.VideoScreenEnd, isMobile), viewed)} />
           <ProvidersScreen {...screenProps(providerScreenProps(sections.ProvidersScreen), viewed)} />
           <PrivacyScreen {...screenProps(sections.PrivacyScreen, viewed)} />
-          <VideoScreen {...screenProps(videoScreenProps(sections.VideoScreenStart), viewed)} nextHandler={this.next} />
+          <VideoScreen {...screenProps(videoScreenProps(sections.VideoScreenStart, isMobile), viewed)} nextHandler={this.next} />
         </section>
         <nav>
           <CurrentScreenIndicator currentSection={this.props.currentSection} />

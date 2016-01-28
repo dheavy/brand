@@ -22,7 +22,7 @@ module.exports = {
         loader: 'url?limit=25000'
       },
       {
-        test: /\.(ttf|eot|svg|woff2?)(\?[a-z0-9.=]+)?$/,
+        test: /\.(ttf|eot|woff2?)(\?[a-z0-9.=]+)?$/,
         loader: 'file'
       },
       {
