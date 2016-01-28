@@ -45,7 +45,7 @@ const VideoSrc = props => {
 
 VideoSrc.propTypes = {
   src: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  format: PropTypes.string.isRequired
 };
 
 export default FullscreenVideo;
