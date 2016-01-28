@@ -46,6 +46,13 @@ function providerScreenProps(props) {
   return Object.assign({}, props, {providersNormal, providersNaughty});
 }
 
+// Merge props for 'Video' screen, to transform array
+// of posters into immutable list.
+function videoScreenProps(props) {
+  const posters = List(props.posters);
+  return Object.assign({}, props, {posters});
+}
+
 class App extends Component {
   static propTypes = {
     currentSection: PropTypes.number.isRequired,
@@ -55,15 +62,24 @@ class App extends Component {
     viewed: ImmutablePropTypes.set.isRequired
   };
 
-  // Debounced mousewheel user action
-  // triggers NEXT_SCREEN Redux action.
+  constructor(props, context) {
+    super(props, context);
+    this.next = this.next.bind(this);
+  }
+
+  // Debounced mousewheel user action triggers NEXT_SCREEN Redux action.
+  // It only works after the first screen is viewed.
   componentWillMount() {
     window.addEventListener('mousewheel', (debounce((e) => {
       e.preventDefault();
-      if (e.deltaX < 0 || e.deltaX === -0) {
-        this.props.actions.nextScreen(this.props.currentSection);
+      if ((e.deltaX < 0 || e.deltaX === -0) && this.props.viewed.size > 0) {
+        this.next();
       }
     }, 1000, {leading: true, trailing: false})).bind(this));
+  }
+
+  next() {
+    this.props.actions.nextScreen(this.props.currentSection);
   }
 
   render() {
@@ -76,10 +92,10 @@ class App extends Component {
     return (
       <main>
         <section>
-          <VideoScreen {...screenProps(sections.VideoScreenEnd, viewed)} />
+          <VideoScreen {...screenProps(videoScreenProps(sections.VideoScreenEnd), viewed)} />
           <ProvidersScreen {...screenProps(providerScreenProps(sections.ProvidersScreen), viewed)} />
           <PrivacyScreen {...screenProps(sections.PrivacyScreen, viewed)} />
-          <VideoScreen {...screenProps(sections.VideoScreenStart, viewed)} />
+          <VideoScreen {...screenProps(videoScreenProps(sections.VideoScreenStart), viewed)} nextHandler={this.next} />
         </section>
         <nav>
           <CurrentScreenIndicator currentSection={this.props.currentSection} />
