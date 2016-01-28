@@ -7,7 +7,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import React, {PropTypes} from 'react';
 
-function poster(posters) {
+const poster = posters => {
   if (posters.size === 0) {
     throw Error('Posters are missing!');
   }
