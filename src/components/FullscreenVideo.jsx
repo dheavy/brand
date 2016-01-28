@@ -24,17 +24,24 @@ const videotype = format => `video/${format}`
 
 const FullscreenVideo = props => {
   return (
-    <video autoPlay loop muted className="fullscreen"
+    <video autoPlay={props.play} loop muted className="fullscreen"
            poster={poster(props.posters)}>
-      <VideoSrc src={props.video} format={'mp4'} />
-      <VideoSrc src={props.video} format={'webm'} />
+      {!props.isMobile &&
+        <VideoSrc src={props.video} format={'mp4'} />
+      }
+
+      {!props.isMobile &&
+        <VideoSrc src={props.video} format={'webm'} />
+      }
     </video>
   );
 };
 
 FullscreenVideo.propTypes = {
   posters: ImmutablePropTypes.list.isRequired,
-  video: PropTypes.string.isRequired
+  video: PropTypes.string.isRequired,
+  play: PropTypes.bool,
+  isMobile: PropTypes.bool
 };
 
 const VideoSrc = props => {

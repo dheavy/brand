@@ -22,8 +22,9 @@ require('!style!css!sass!./styles/definitions.scss');
 require('!style!css!sass!./styles/foundation.scss');
 require('!style!css!sass!./styles/mypleasure.scss');
 
+const isMobile = document.getElementsByTagName('html')[0].classList.contains('mobile');
 const content = require('./content.json');
-const store = configureStore(INITIAL_STATE, Map(content));
+const store = configureStore(INITIAL_STATE.merge({isMobile}), Map(content));
 
 render(
   <Provider store={store}>
