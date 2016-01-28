@@ -19,6 +19,9 @@ function poster(posters) {
   return `images/mp-poster-${posters.get(randIndex)}.png`;
 }
 
+const videosrc = (video, format) => `videos/${video}.${format}`;
+const videotype = format => `video/${format}`
+
 const FullscreenVideo = props => {
   return (
     <video autoPlay loop muted className="fullscreen"
@@ -33,9 +36,6 @@ FullscreenVideo.propTypes = {
   posters: ImmutablePropTypes.list.isRequired,
   video: PropTypes.string.isRequired
 };
-
-const videosrc = (video, format) => `videos/${video}.${format}`;
-const videotype = format => `video/${format}`
 
 const VideoSrc = props => {
   return (
