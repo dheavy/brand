@@ -30,11 +30,11 @@ const VideoScreen = props => {
       <div className="row center-full">
         <h1 className="column small-centered small-20 medium-20 large-20 title">{props.title}</h1>
         <h2 className="column small-centered small-20 medium-20 large-20 subtitle">{props.subtitle}</h2>
-        <div className="column small-centered small-20 medium-20 large-20">
-          <form className="column small-centered small-6 medium-6 large-6">
+        <div className="row">
+          <form className="column small-centered small-12 medium-6 large-6">
             <div className="input-group">
               <input className="input-group-field" type="email" placeholder="Email" />
-              <div className="input-group-button">
+              <div className="input-group-button small-20">
                 <input type="submit" className="button" value={props.cta} />
               </div>
             </div>
@@ -43,7 +43,7 @@ const VideoScreen = props => {
       </div>
       {props.next &&
       <div className="btn-next">
-        <div className="column small-centered small-1 medium-20 large-20" onClick={props.nextHandler}>{props.next}</div>
+        <div className="column small-centered small-20 medium-20 large-20" onClick={props.nextHandler}>{props.next}</div>
       </div>}
     </section>
   );
