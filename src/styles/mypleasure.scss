@@ -155,14 +155,7 @@ html, body {
         position: absolute;
         left: 0;
         top: 0;
-        width: 100%;
-        height: auto;
-
-        @media only screen and (max-width: 40em) {
-          width: auto;
-          height: 100%;
-          left: -50%;
-        }
+        height: 100%;
       }
     }
 

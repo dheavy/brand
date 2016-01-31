@@ -7,6 +7,7 @@
 import {
   TOTAL_SECTIONS,
   NEXT_SCREEN,
+  RESIZE,
   SUBMIT_EMAIL
 } from '../constants/ActionTypes';
 
@@ -30,6 +31,9 @@ export default function landingPage(state = INITIAL_STATE, action) {
         currentSection: Math.min(action.currentSection, MAX_SECTIONS),
         viewed: state.get('viewed').add(action.currentSection - 1)
       }));
+
+    case RESIZE:
+      return state.merge(Map({width: action.width, height: action.height}));
 
     default:
       return state;

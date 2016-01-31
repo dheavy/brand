@@ -22,7 +22,10 @@ function mapStateToProps(state) {
     maxSections: state.get('maxSections'),
     sections: state.get('sections'),
     viewed: state.get('viewed'),
-    isMobile: state.get('isMobile')
+    isMobile: state.get('isMobile'),
+    width: state.get('width'),
+    height: state.get('height'),
+    aspectRatio: state.get('aspectRatio')
   }
 }
 
@@ -50,9 +53,9 @@ function providerScreenProps(props) {
 // Merge props for 'Video' screen, to transform array
 // of posters into immutable list, and tell if this is a mobile
 // device or not (influences whether the video is displayed).
-function videoScreenProps(props, isMobile) {
+function videoScreenProps(props, isMobile, width, height, aspectRatio) {
   const posters = List(props.posters);
-  return Object.assign({}, props, {posters, isMobile});
+  return Object.assign({}, props, {posters, isMobile, width, height, aspectRatio});
 }
 
 class App extends Component {
@@ -61,7 +64,8 @@ class App extends Component {
     maxSections: PropTypes.number.isRequired,
     actions: PropTypes.object.isRequired,
     sections: PropTypes.object.isRequired,
-    viewed: ImmutablePropTypes.set.isRequired
+    viewed: ImmutablePropTypes.set.isRequired,
+    aspectRatio: PropTypes.number.isRequired
   };
 
   constructor(props, context) {
@@ -69,15 +73,24 @@ class App extends Component {
     this.next = this.next.bind(this);
   }
 
-  // Debounced mousewheel user action triggers NEXT_SCREEN Redux action.
-  // It only works after the first screen is viewed.
   componentWillMount() {
+    // Debounced mousewheel triggers NEXT_SCREEN Redux action.
+    // It only works after the first screen is viewed.
     window.addEventListener('mousewheel', (debounce((e) => {
       e.preventDefault();
       if ((e.deltaX < 0 || e.deltaX === -0) && this.props.viewed.size > 0) {
         this.next();
       }
     }, 1000, {leading: true, trailing: false})).bind(this));
+
+    // Window resize triggers RESIZE Redux action.
+    // Used by VideoScreen to ensure videos are covering the screen.
+    window.addEventListener('resize', (e) => {
+      this.props.actions.resize({
+        width: e.target.innerWidth,
+        height: e.target.innerHeight
+      });
+    });
   }
 
   next() {
@@ -86,19 +99,30 @@ class App extends Component {
 
   render() {
     const {
-      actions: {nextScreen, submitEmail},
+      actions: {nextScreen, submitEmail, resize},
       sections,
       viewed,
-      isMobile
+      isMobile,
+      width,
+      height,
+      aspectRatio
     } = this.props;
 
     return (
       <main>
         <section>
-          <VideoScreen {...screenProps(videoScreenProps(sections.VideoScreenEnd, isMobile), viewed)} />
+          <VideoScreen {
+            ...screenProps(videoScreenProps(
+              sections.VideoScreenEnd, isMobile, width, height, aspectRatio
+            ), viewed)
+          } />
           <ProvidersScreen {...screenProps(providerScreenProps(sections.ProvidersScreen), viewed)} />
           <PrivacyScreen {...screenProps(sections.PrivacyScreen, viewed)} />
-          <VideoScreen {...screenProps(videoScreenProps(sections.VideoScreenStart, isMobile), viewed)} nextHandler={this.next} />
+          <VideoScreen {
+            ...screenProps(videoScreenProps(
+              sections.VideoScreenStart, isMobile, width, height, aspectRatio
+            ), viewed)
+          } nextHandler={this.next} />
         </section>
         <nav>
           <CurrentScreenIndicator currentSection={this.props.currentSection} />

@@ -24,6 +24,9 @@ const VideoScreen = props => {
           posters={props.posters}
           play={checkIfStart(props.viewed, props.id)}
           isMobile={props.isMobile}
+          width={props.width}
+          height={props.height}
+          aspectRatio={props.aspectRatio}
         />
       }
       <Logo />
@@ -31,7 +34,7 @@ const VideoScreen = props => {
         <h1 className="column small-centered small-20 medium-20 large-20 title">{props.title}</h1>
         <h2 className="column small-centered small-20 medium-20 large-20 subtitle">{props.subtitle}</h2>
         <div className="row">
-          <form className="column small-centered small-12 medium-6 large-6">
+          <form className="column small-centered small-6 medium-9 large-6">
             <div className="input-group">
               <input className="input-group-field" type="email" placeholder="Email" />
               <div className="input-group-button small-20">
@@ -51,6 +54,7 @@ const VideoScreen = props => {
 
 VideoScreen.propTypes = {
   posters: ImmutablePropTypes.list.isRequired,
+  aspectRatio: PropTypes.number.isRequired,
   video: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,

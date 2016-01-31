@@ -19,13 +19,33 @@ const poster = posters => {
   return `images/mp-poster-${posters.get(randIndex)}.png`;
 }
 
+const size = (width, height, ratio) => {
+  const div = width / height;
+
+  // Landscape.
+  if (width > height) {
+    // Window width exceeds/equals video width.
+    if (div > ratio) {
+      return {width: '100%', height: 'auto'}
+    } else {
+      return {height: '100%', width: 'auto'}
+    }
+  }
+}
+
 const videosrc = (video, format) => `videos/${video}.${format}`;
 const videotype = format => `video/${format}`
 
 const FullscreenVideo = props => {
   return (
-    <video autoPlay={props.play} loop muted className="fullscreen"
-           poster={poster(props.posters)}>
+    <video
+      loop
+      muted
+      autoPlay={props.play}
+      className="fullscreen"
+      poster={poster(props.posters)}
+      style={size(props.width, props.height, props.aspectRatio)}
+    >
       {!props.isMobile &&
         <VideoSrc src={props.video} format={'mp4'} />
       }
@@ -39,9 +59,12 @@ const FullscreenVideo = props => {
 
 FullscreenVideo.propTypes = {
   posters: ImmutablePropTypes.list.isRequired,
+  aspectRatio: PropTypes.number.isRequired,
   video: PropTypes.string.isRequired,
   play: PropTypes.bool,
-  isMobile: PropTypes.bool
+  isMobile: PropTypes.bool,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired
 };
 
 const VideoSrc = props => {

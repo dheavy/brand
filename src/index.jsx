@@ -23,8 +23,13 @@ require('!style!css!sass!./styles/foundation.scss');
 require('!style!css!sass!./styles/mypleasure.scss');
 
 const isMobile = document.getElementsByTagName('html')[0].classList.contains('mobile');
+const width = window.innerWidth;
+const height = window.innerHeight;
 const content = require('./content.json');
-const store = configureStore(INITIAL_STATE.merge({isMobile}), Map(content));
+const store = configureStore(
+  INITIAL_STATE.merge({isMobile, width, height}),
+  Map(content)
+);
 
 render(
   <Provider store={store}>
