@@ -12,9 +12,9 @@
 
     "PrivacyScreen": {
       "id": 1,
-      "title": "PrivacyScreen",
-      "subtitle": "Subtitle for PrivacyScreen",
-      "cta": "CTA for PrivacyScreen"
+      "title": "Enjoy your privacy",
+      "subtitle": "Bookmark videos, build collections and share them with others — or go naughty and keep'em private.",
+      "cta": "Reserve my account"
     },
 
     "ProvidersScreen": {

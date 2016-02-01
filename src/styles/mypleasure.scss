@@ -83,22 +83,7 @@ html, body {
       }
     }
 
-    &.video {
-      h1, h2 {
-        color: #FFFFFF;
-      }
-
-      h2 {
-        @media only screen and (max-width: 40em) {
-          padding-left: 1.5rem;
-          padding-right: 1.5rem;
-        }
-      }
-
-      .title, .subtitle, .btn-next {
-        text-align: center;
-      }
-
+    &.video, &.privacy, &.providers {
       .input-group {
         margin-left: 10px;
         margin-top: 2rem;
@@ -131,6 +116,23 @@ html, body {
           width: 100%;
         }
       }
+    }
+
+    &.video {
+      h1, h2 {
+        color: #FFFFFF;
+      }
+
+      h2 {
+        @media only screen and (max-width: 40em) {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+      }
+
+      .title, .subtitle, .btn-next {
+        text-align: center;
+      }
 
       .btn-next {
         bottom: 0;
@@ -144,11 +146,6 @@ html, body {
         @include font-size(12px);
         font-weight: 700;
         color: #FFFFFF;
-
-        @media only screen and (max-width: 40em) {
-          bottom: auto;
-          top: 100%;
-        }
       }
 
       video {
@@ -160,7 +157,16 @@ html, body {
     }
 
     &.privacy {
+      background-color: #FFFFFF;
+      color: #1A1A1A;
 
+      h1 {
+        padding-left: 1px;
+      }
+
+      h2 {
+        padding-left: 4px;
+      }
     }
 
     &.providers {

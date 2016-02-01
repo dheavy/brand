@@ -78,7 +78,7 @@ class App extends Component {
     // It only works after the first screen is viewed.
     window.addEventListener('mousewheel', (debounce((e) => {
       e.preventDefault();
-      if ((e.deltaX < 0 || e.deltaX === -0) && this.props.viewed.size > 0) {
+      if ((e.deltaX < 0 || e.deltaX === -1) && this.props.viewed.size > 0) {
         this.next();
       }
     }, 1000, {leading: true, trailing: false})).bind(this));

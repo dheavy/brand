@@ -9,6 +9,7 @@ import FullscreenVideo from './FullscreenVideo';
 import MotionComponent from './MotionComponent';
 import {Motion, spring} from 'react-motion';
 import React, {PropTypes} from 'react';
+import Form from './Form';
 import Logo from './Logo';
 
 const checkIfStart = (viewed, id) => {
@@ -34,14 +35,7 @@ const VideoScreen = props => {
         <h1 className="column small-centered small-20 medium-20 large-20 title">{props.title}</h1>
         <h2 className="column small-centered small-20 medium-20 large-20 subtitle">{props.subtitle}</h2>
         <div className="row">
-          <form className="column small-centered small-6 medium-9 large-6">
-            <div className="input-group">
-              <input className="input-group-field" type="email" placeholder="Email" />
-              <div className="input-group-button small-20">
-                <input type="submit" className="button" value={props.cta} />
-              </div>
-            </div>
-          </form>
+          <Form classNames={"column small-centered small-10 medium-9 large-6"} cta={props.cta} />
         </div>
       </div>
       {props.next &&
