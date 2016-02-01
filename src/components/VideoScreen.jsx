@@ -6,7 +6,7 @@
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import FullscreenVideo from './FullscreenVideo';
-import MotionComponent from './MotionComponent';
+import MotionScreen from './MotionScreen';
 import {Motion, spring} from 'react-motion';
 import React, {PropTypes} from 'react';
 import Form from './Form';
@@ -56,4 +56,4 @@ VideoScreen.propTypes = {
   next: PropTypes.string
 };
 
-export default MotionComponent(VideoScreen);
+export default MotionScreen(VideoScreen);

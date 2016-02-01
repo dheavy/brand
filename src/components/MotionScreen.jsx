@@ -3,7 +3,7 @@
  * --------------------
  * Higher-order component to imbue screen
  * with animations to remove from view when viewed.
- * Note that composed components using MotionComponent
+ * Note that composed components using MotionScreen
  * should implement a `style` prop with value `props.style`
  * on the rendered DOM element they wish to animate out.
  *
@@ -14,7 +14,7 @@
  *   );
  * }
  *
- * export default MotionComponent(ComposedComponent);
+ * export default MotionScreen(ComposedComponent);
  */
 
 import {Motion, spring} from 'react-motion';
@@ -37,7 +37,7 @@ const animStyleProps = (y, o) => {
   };
 }
 
-const MotionComponent = (Screen) => class extends Component {
+const MotionScreen = Screen => class extends Component {
   render() {
     return (
       <Motion style={animStyleConditions(this.props)}>
@@ -49,4 +49,4 @@ const MotionComponent = (Screen) => class extends Component {
   }
 }
 
-export default MotionComponent;
+export default MotionScreen;
