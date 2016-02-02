@@ -172,6 +172,30 @@ html, body {
         padding-left: 4px;
       }
 
+      .form {
+        @media only screen and (max-width: 40em) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      form {
+        @media only screen and (max-width: 40em) {
+          margin: 0 auto;
+        }
+      }
+
+      .center-full {
+        @media only screen and (max-width: 40em) {
+          width: 96%;
+          left: 49%;
+          top: 42.5%;
+          margin-left: -48%;
+          text-align: center;
+        }
+      }
+
       .feed {
         position: absolute;
         width: 485px;
@@ -182,10 +206,21 @@ html, body {
         transition: opacity 500ms cubic-bezier(0.215, 0.610, 0.355, 1.000), transform 2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
         @include prefix(opacity, 0);
 
+        @media only screen and (max-width: 40em) {
+          background-size: 95%;
+          background-position: center;
+          width: 100%;
+          left: 0;
+        }
+
         &.is-visible {
           -webkit-transform: translate3d(0, -25%, 0);
           transform: translate3d(0, -25%, 0);
           @include prefix(opacity, 1);
+
+          @media only screen and (max-width: 40em) {
+            transform: translate3d(0, -18%, 0);
+          }
         }
       }
     }
@@ -202,6 +237,16 @@ html, body {
       }
 
       .providers-list {
+        @media only screen and (max-width: 40em) {
+          margin-top: -10px;
+        }
+
+        .center-full {
+          @media only screen and (max-width: 40em) {
+            top: 55%;
+          }
+        }
+
         ul {
           position: relative;
           display: inline-block;
@@ -219,12 +264,29 @@ html, body {
 
             &.youtube { background-image: url(../../dist/images/logo-youtube.png) }
             &.facebook { background-image: url(../../dist/images/logo-facebook.png) }
-            &.koreus { background-image: url(../../dist/images/logo-koreus.png) }
+            &.koreus {
+              background-image: url(../../dist/images/logo-koreus.png);
+              @media only screen and (max-width: 40em) {
+                background-position-y: 68%;
+              }
+            }
             &.vimeo { background-image: url(../../dist/images/logo-vimeo.png) }
-            &.dailymotion { background-image: url(../../dist/images/logo-dailymotion.png) }
+            &.dailymotion {
+              background-image: url(../../dist/images/logo-dailymotion.png);
+              @media only screen and (max-width: 40em) {
+                background-position-y: 62%;
+              }
+            }
             &.xhamster { background-image: url(../../dist/images/logo-xhamster.png) }
             &.xvideos { background-image: url(../../dist/images/logo-xvideos.png) }
             &.youporn{ background-image: url(../../dist/images/logo-youporn.png) }
+
+            @media only screen and (max-width: 40em) {
+              width: 80px;
+              height: 30px;
+              margin: 0 0.3rem;
+              background-size: 90%;
+            }
           }
         }
       }
@@ -242,6 +304,10 @@ html, body {
         position: relative;
         margin: 2rem auto;
         background-position-y: top;
+
+        @media only screen and (max-width: 40em) {
+          margin: 2rem auto 1.2rem auto;
+        }
       }
 
       .provider {
