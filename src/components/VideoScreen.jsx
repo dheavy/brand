@@ -13,7 +13,7 @@ import Form from './Form';
 import Logo from './Logo';
 
 const checkIfStart = (viewed, id) => {
-  return (viewed.size === 0 && id === 0) || (viewed.contains(id));
+  return viewed.size === 0 && id === 0 || viewed.size === id;
 }
 
 const VideoScreen = props => {
@@ -35,7 +35,7 @@ const VideoScreen = props => {
         <h1 className="column small-centered small-20 medium-20 large-20 title">{props.title}</h1>
         <h2 className="column small-centered small-20 medium-20 large-20 subtitle">{props.subtitle}</h2>
         <div className="row">
-          <Form classNames={"column small-centered small-10 medium-9 large-6"} cta={props.cta} />
+          <Form classNames={"column small-centered small-15 medium-10 large-8"} cta={props.cta} />
         </div>
       </div>
       {props.next &&
