@@ -201,8 +201,47 @@ html, body {
         text-align: center;
       }
 
-      .providers-list:nth-child(1) {
-        background-color:red;
+      .providers-list {
+        ul {
+          position: relative;
+          display: inline-block;
+          list-style: none;
+
+          li {
+            display: inline-block;
+            position: relative;
+            width: 155px;
+            height: 50px;
+            text-indent: -9999rem;
+            background-repeat: no-repeat;
+            background-position-x: center;
+            background-position-y: center;
+
+            &.youtube { background-image: url(../../dist/images/logo-youtube.png) }
+            &.facebook { background-image: url(../../dist/images/logo-facebook.png) }
+            &.koreus { background-image: url(../../dist/images/logo-koreus.png) }
+            &.vimeo { background-image: url(../../dist/images/logo-vimeo.png) }
+            &.dailymotion { background-image: url(../../dist/images/logo-dailymotion.png) }
+            &.xhamster { background-image: url(../../dist/images/logo-xhamster.png) }
+            &.xvideos { background-image: url(../../dist/images/logo-xvideos.png) }
+            &.youporn{ background-image: url(../../dist/images/logo-youporn.png) }
+          }
+        }
+      }
+
+      .providers-list:not(:last-child) ul {
+        top: 30px;
+      }
+
+      .providers-list:last-child:before {
+        content: " ";
+        width: 3rem;
+        height: 1px;
+        display: block;
+        background-color: #FFFFFF;
+        position: relative;
+        margin: 2rem auto;
+        background-position-y: top;
       }
 
       .provider {

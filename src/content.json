@@ -19,11 +19,11 @@
 
     "ProvidersScreen": {
       "id": 2,
-      "title": "ProvidersScreen",
-      "subtitle": "Subtitle for ProvidersScreen",
-      "cta": "CTA for ProvidersScreen",
-      "providersNormal": ["p1", "p2"],
-      "providersNaughty": ["p1", "p2"]
+      "title": "Add videos from all around the web",
+      "subtitle": "Currently supporting the follow videos platforms — and more the come.",
+      "cta": "Reserve my account",
+      "providersNormal": ["Youtube", "Dailymotion", "Facebook", "Koreus", "Vimeo"],
+      "providersNaughty": ["XHamster", "XVideos", "Youporn"]
     },
 
     "VideoScreenEnd": {

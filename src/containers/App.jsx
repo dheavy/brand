@@ -45,8 +45,8 @@ function screenProps(props, viewed, isMobile) {
 // Merge props for 'Provider' screen, to transform arrays
 // of providers into immutable Lists.
 function providerScreenProps(props) {
-  const providersNormal = List.of(props.providersNormal);
-  const providersNaughty = List.of(props.providersNaughty);
+  const providersNormal = List(props.providersNormal);
+  const providersNaughty = List(props.providersNaughty);
   return Object.assign({}, props, {providersNormal, providersNaughty});
 }
 
