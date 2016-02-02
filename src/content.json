@@ -30,9 +30,9 @@
       "id": 3,
       "video": "mp",
       "posters": ["0", "1", "2", "3", "4", "5"],
-      "title": "VideoScreen 2",
-      "subtitle": "Subtitle for VideoScreen 2",
-      "cta": "Reserve my account now!"
+      "title": "Let's get started",
+      "subtitle": "Dig into hundreds of videos.",
+      "cta": "I REALLY want my account, now!"
     },
 
     "ThankYou": {}
