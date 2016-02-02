@@ -43,7 +43,7 @@ const MediaProviders = props => {
   return (
     <ul>
       {props.providers.map(p => {
-        return <MediaProvider provider={p} />
+        return <MediaProvider key={p.toLowerCase()} provider={p} />
       })}
     </ul>
   );
