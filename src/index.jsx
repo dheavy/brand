@@ -6,7 +6,6 @@
 
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
-import {nextScreen} from './actions';
 import App from './containers/App';
 import {render} from 'react-dom';
 import {Map} from 'immutable';
