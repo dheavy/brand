@@ -18,7 +18,12 @@ const ProvidersScreen = props => {
         <h1 className="column small-centered small-20 medium-10 large-10 title">{props.title}</h1>
         <h2 className="column small-centered small-20 medium-20 large-20 subtitle">{props.subtitle}</h2>
         <div className="row">
-          <Form classNames={"column small-centered small-10 medium-9 large-6"} cta={props.cta} />
+          <Form
+            formName={`form-${props.id}`}
+            formData={props.form}
+            classNames={"column small-centered small-10 medium-9 large-6"}
+            cta={props.cta}
+          />
         </div>
         <div className="column providers-list small-centered small-20 medium-20 large-20">
           <MediaProviders providers={props.providersNormal} />

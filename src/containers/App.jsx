@@ -39,8 +39,8 @@ function mapDispatchToProps(dispatch) {
 // Merge props to add the 'viewed' value
 // (i.e. array referencing which screens have been viewed
 // and should be removed).
-function screenProps(props, viewed, isMobile) {
-  return Object.assign({}, props, {viewed})
+function screenProps(props, viewed, form) {
+  return Object.assign({}, props, {viewed, form})
 }
 
 // Merge props for 'Provider' screen, to transform arrays
@@ -104,12 +104,12 @@ class App extends Component {
     const {
       actions: {nextScreen, submitEmail, resize},
       sections,
-      config,
       viewed,
       isMobile,
       width,
       height,
-      aspectRatio
+      aspectRatio,
+      config: {form}
     } = this.props;
 
     return (
@@ -118,14 +118,16 @@ class App extends Component {
           <VideoScreen {
             ...screenProps(videoScreenProps(
               sections.VideoScreenEnd, isMobile, width, height, aspectRatio
-            ), viewed)
+            ), viewed, form)
           } />
-          <ProvidersScreen {...screenProps(providerScreenProps(sections.ProvidersScreen), viewed)} />
-          <PrivacyScreen {...screenProps(sections.PrivacyScreen, viewed)} />
+          <ProvidersScreen {
+            ...screenProps(providerScreenProps(sections.ProvidersScreen), viewed, form)
+          } />
+          <PrivacyScreen {...screenProps(sections.PrivacyScreen, viewed, form)} />
           <VideoScreen {
             ...screenProps(videoScreenProps(
               sections.VideoScreenStart, isMobile, width, height, aspectRatio
-            ), viewed)
+            ), viewed, form)
           } nextHandler={this.next} />
         </section>
         <nav>

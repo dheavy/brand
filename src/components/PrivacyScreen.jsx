@@ -31,7 +31,12 @@ const PrivacyScreen = props => {
             <h2>{props.subtitle}</h2>
           </div>
           <div className="row form">
-            <Form classNames={"column small-15 medium-20 large-15"} cta={props.cta} />
+            <Form
+              formName={`form-${props.id}`}
+              formData={props.form}
+              classNames={"column small-15 medium-20 large-15"}
+              cta={props.cta}
+            />
           </div>
         </div>
         <div className="column small-10 medium-10 large-10">
