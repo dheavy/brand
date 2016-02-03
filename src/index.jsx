@@ -26,9 +26,11 @@ const isMobile = document.getElementsByTagName('html')[0].classList.contains('mo
 const width = window.innerWidth;
 const height = window.innerHeight;
 const content = require('./content.json');
+const config = require('./config.json');
 const store = configureStore(
   INITIAL_STATE.merge({isMobile, width, height}),
-  Map(content)
+  Map(content),
+  Map(config)
 );
 
 render(

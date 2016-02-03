@@ -14,8 +14,15 @@ const storeWithMiddleware = compose(
   applyMiddleware(thunk)
 )(createStore);
 
-export default function configureStore(initialState = null, sectionsFromJSON) {
-  const store = storeWithMiddleware(reducer, initialState.merge(sectionsFromJSON));
+export default function configureStore(initialState = null, sectionsFromJSON, configFromJSON) {
+  const store = storeWithMiddleware(
+    reducer,
+    initialState.merge(
+      sectionsFromJSON.merge(
+        configFromJSON
+      )
+    )
+  );
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {

@@ -21,6 +21,7 @@ function mapStateToProps(state) {
     currentSection: state.get('currentSection'),
     maxSections: state.get('maxSections'),
     sections: state.get('sections'),
+    config: state.get('config'),
     viewed: state.get('viewed'),
     isMobile: state.get('isMobile'),
     width: state.get('width'),
@@ -64,6 +65,7 @@ class App extends Component {
     maxSections: PropTypes.number.isRequired,
     actions: PropTypes.object.isRequired,
     sections: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired,
     viewed: ImmutablePropTypes.set.isRequired,
     aspectRatio: PropTypes.number.isRequired
   };
@@ -102,6 +104,7 @@ class App extends Component {
     const {
       actions: {nextScreen, submitEmail, resize},
       sections,
+      config,
       viewed,
       isMobile,
       width,

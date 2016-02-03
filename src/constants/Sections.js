@@ -8,5 +8,6 @@ export const INITIAL_STATE = Map({
   maxSections: MAX_SECTIONS,
   aspectRatio: ASPECT_RATIO,
   sections: null,
+  config: null,
   viewed: Set()
 });
