@@ -1,4 +1,6 @@
 export const NEXT_SCREEN = 'NEXT_SCREEN';
-export const SUBMIT_EMAIL = 'SUBMIT_EMAIL';
+export const UPDATE_INPUT_VALUE = 'UPDATE_INPUT_VALUE';
+export const FORM_REQUEST_BEGIN = 'FORM_REQUEST_BEGIN';
+export const FORM_REQUEST_END = 'FORM_REQUEST_END';
 export const THANK_YOU = 'THANK_YOU';
 export const RESIZE = 'RESIZE';
