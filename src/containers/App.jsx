@@ -24,6 +24,7 @@ function mapStateToProps(state) {
     config: state.get('config'),
     viewed: state.get('viewed'),
     isMobile: state.get('isMobile'),
+    inputValue: state.get('inputValue'),
     width: state.get('width'),
     height: state.get('height'),
     aspectRatio: state.get('aspectRatio')
@@ -39,8 +40,8 @@ function mapDispatchToProps(dispatch) {
 // Merge props to add the 'viewed' value
 // (i.e. array referencing which screens have been viewed
 // and should be removed).
-function screenProps(props, viewed, form) {
-  return Object.assign({}, props, {viewed, form})
+function screenProps(props, inputValue, viewed, form, submitForm, inputChange) {
+  return Object.assign({}, props, {inputValue, viewed, form, submitForm, inputChange})
 }
 
 // Merge props for 'Provider' screen, to transform arrays
@@ -60,6 +61,7 @@ function videoScreenProps(props, isMobile, width, height, aspectRatio) {
 }
 
 class App extends Component {
+
   static propTypes = {
     currentSection: PropTypes.number.isRequired,
     maxSections: PropTypes.number.isRequired,
@@ -67,12 +69,15 @@ class App extends Component {
     sections: PropTypes.object.isRequired,
     config: PropTypes.object.isRequired,
     viewed: ImmutablePropTypes.set.isRequired,
-    aspectRatio: PropTypes.number.isRequired
+    aspectRatio: PropTypes.number.isRequired,
+    inputValue: PropTypes.string
   };
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.next = this.next.bind(this);
+    this.submitForm = this.submitForm.bind(this);
+    this.inputChange = this.inputChange.bind(this);
   }
 
   componentWillMount() {
@@ -100,6 +105,15 @@ class App extends Component {
     this.props.actions.nextScreen(this.props.currentSection);
   }
 
+  inputChange(e) {
+    this.props.actions.updateInputValue(e.target.value);
+  }
+
+  submitForm({email, formAction, formName}) {
+    console.log({email, formAction, formName})
+    //this.props.actions.submitForm({email, formAction, formName});
+  }
+
   render() {
     const {
       actions: {nextScreen, submitEmail, resize},
@@ -109,6 +123,7 @@ class App extends Component {
       width,
       height,
       aspectRatio,
+      inputValue,
       config: {form}
     } = this.props;
 
@@ -116,18 +131,25 @@ class App extends Component {
       <main>
         <section>
           <VideoScreen {
-            ...screenProps(videoScreenProps(
-              sections.VideoScreenEnd, isMobile, width, height, aspectRatio
-            ), viewed, form)
+            ...screenProps(
+              videoScreenProps(sections.VideoScreenEnd, isMobile, width, height, aspectRatio),
+              inputValue, viewed, form, this.submitForm, this.inputChange
+            )
           } />
           <ProvidersScreen {
-            ...screenProps(providerScreenProps(sections.ProvidersScreen), viewed, form)
+            ...screenProps(
+              providerScreenProps(sections.ProvidersScreen),
+              inputValue, viewed, form, this.submitForm, this.inputChange
+            )
           } />
-          <PrivacyScreen {...screenProps(sections.PrivacyScreen, viewed, form)} />
+          <PrivacyScreen {
+            ...screenProps(
+              sections.PrivacyScreen, inputValue, viewed, form, this.submitForm, this.inputChange
+            )
+          } />
           <VideoScreen {
-            ...screenProps(videoScreenProps(
-              sections.VideoScreenStart, isMobile, width, height, aspectRatio
-            ), viewed, form)
+            ...screenProps(videoScreenProps(sections.VideoScreenStart, isMobile, width, height, aspectRatio),
+              inputValue, viewed, form, this.submitForm, this.inputChange)
           } nextHandler={this.next} />
         </section>
         <nav>
@@ -136,6 +158,7 @@ class App extends Component {
       </main>
     );
   }
+
 }
 
 export default connect(
