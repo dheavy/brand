@@ -5,10 +5,9 @@
  */
 
 import {
-  TOTAL_SECTIONS,
   NEXT_SCREEN,
   RESIZE,
-  SUBMIT_EMAIL
+  UPDATE_INPUT_VALUE
 } from '../constants/ActionTypes';
 
 import {
@@ -17,7 +16,6 @@ import {
 } from '../constants/Sections';
 
 import {Map} from 'immutable';
-
 
 export default function landingPage(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -34,6 +32,9 @@ export default function landingPage(state = INITIAL_STATE, action) {
 
     case RESIZE:
       return state.merge(Map({width: action.width, height: action.height}));
+
+    case UPDATE_INPUT_VALUE:
+      return state.merge(Map({inputValue: action.inputValue}));
 
     default:
       return state;
