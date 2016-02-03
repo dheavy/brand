@@ -40,6 +40,9 @@ const VideoScreen = props => {
             formData={props.form}
             classNames={"column small-centered small-15 medium-10 large-8"}
             cta={props.cta}
+            inputValue={props.inputValue}
+            inputChange={props.inputChange}
+            submit={props.submitForm}
           />
         </div>
       </div>

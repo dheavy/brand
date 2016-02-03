@@ -36,6 +36,9 @@ const PrivacyScreen = props => {
               formData={props.form}
               classNames={"column small-15 medium-20 large-15"}
               cta={props.cta}
+              inputValue={props.inputValue}
+              inputChange={props.inputChange}
+              submit={props.submitForm}
             />
           </div>
         </div>

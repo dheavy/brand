@@ -23,6 +23,9 @@ const ProvidersScreen = props => {
             formData={props.form}
             classNames={"column small-centered small-10 medium-9 large-6"}
             cta={props.cta}
+            inputValue={props.inputValue}
+            inputChange={props.inputChange}
+            submit={props.submitForm}
           />
         </div>
         <div className="column providers-list small-centered small-20 medium-20 large-20">
