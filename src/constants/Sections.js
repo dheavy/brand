@@ -9,5 +9,6 @@ export const INITIAL_STATE = Map({
   aspectRatio: ASPECT_RATIO,
   sections: null,
   config: null,
-  viewed: Set()
+  viewed: Set(),
+  inputValue: ''
 });
