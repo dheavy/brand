@@ -13,7 +13,7 @@ import Form from './Form';
 import Logo from './Logo';
 
 const checkIfStart = (viewed, id) => {
-  return viewed.size === 0 && id === 0 || viewed.size === id;
+  return viewed.size === 0 || id === 0 || viewed.size === id;
 }
 
 const VideoScreen = props => {
