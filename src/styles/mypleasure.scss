@@ -38,6 +38,7 @@ html, body {
       @include font-montserrat();
       @include font-size(50px);
       font-weight: 700;
+      line-height: 3.5rem;
 
       @media only screen and (max-width: 40em) {
         @include font-size(30px);
