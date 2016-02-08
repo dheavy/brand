@@ -8,11 +8,13 @@ html, body {
 #root {
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: #FFFFFF;
+
   input, .button {
     @include prefix(border-radius, 5px);
     @include font-asap();
   }
+
   .button {
     font-weight: 700;
     background-color: $color-mp-blue;
@@ -24,6 +26,54 @@ html, body {
 
   .center-full {
     @include center(100%);
+  }
+
+  nav {
+    @media only screen and (max-width: 40em) {
+      display: none;
+    }
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 2;
+    width: 25px;
+    height: 180px;
+    left: 100%;
+    top: 50%;
+    margin-left: -25px;
+    margin-top: -90px;
+
+    ul {
+      list-style: none;
+      margin-left: 0;
+      position: relative;
+
+      li {
+        position: relative;
+        display: block;
+        width: 15px;
+        height: 15px;
+        left: 5px;
+        border: 1px solid $color-mp-blue;
+        margin-left: 0;
+        padding-left: 0;
+        margin-bottom: 40px;
+        cursor: pointer;
+        background-color: transparent;
+        transition: background-color 500ms;
+        @include prefix(border-radius, 10px);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &.is-active {
+          background-color: $color-mp-blue;
+        }
+      }
+    }
   }
 
   .screen {

@@ -25,17 +25,15 @@ import React, {Component} from 'react';
 const animStyleConditions = props => {
   return {
     y: spring(props.viewed.includes(props.id) ? -100 : 0),
-    o: spring(props.viewed.includes(props.id) ? 0 : 1),
-    z: props.viewed.includes(props.id) ? 0 : 1
+    o: spring(props.viewed.includes(props.id) ? 0 : 1)
   };
 }
 
-const animStyleProps = (y, o, z) => {
+const animStyleProps = (y, o) => {
   return {
     WebkitTransform: `translate3d(0, ${y}%, 0)`,
     transform: `translate3d(0, ${y}%, 0)`,
-    opacity: `${o}`,
-    zIndex: `${z}`
+    opacity: `${o}`
   };
 }
 
@@ -43,8 +41,8 @@ const MotionScreen = Screen => class extends Component {
   render() {
     return (
       <Motion style={animStyleConditions(this.props)}>
-        {({y, o, z}) =>
-          <Screen {...this.props} style={animStyleProps(y, o, z)} />
+        {({y, o}) =>
+          <Screen {...this.props} style={animStyleProps(y, o)} />
         }
       </Motion>
     );

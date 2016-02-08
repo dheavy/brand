@@ -1,5 +1,6 @@
 import {
   NEXT_SCREEN,
+  GOTO_SCREEN,
   RESIZE,
   UPDATE_INPUT_VALUE
 } from '../constants/ActionTypes';
@@ -16,4 +17,8 @@ export function nextScreen(section) {
 
 export function resize({width, height}) {
   return {type: RESIZE, width: width, height: height};
+}
+
+export function gotoScreen(id) {
+  return {type: GOTO_SCREEN, id: id};
 }

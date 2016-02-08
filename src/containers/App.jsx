@@ -76,6 +76,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.next = this.next.bind(this);
+    this.gotoScreen = this.gotoScreen.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.inputChange = this.inputChange.bind(this);
   }
@@ -102,7 +103,11 @@ class App extends Component {
   }
 
   next() {
-    this.props.actions.nextScreen(this.props.currentSection);
+    this.props.actions.gotoScreen(this.props.currentSection + 1);
+  }
+
+  gotoScreen(id) {
+    this.props.actions.gotoScreen(id);
   }
 
   inputChange(e) {
@@ -153,7 +158,11 @@ class App extends Component {
           } nextHandler={this.next} />
         </section>
         <nav>
-          <CurrentScreenIndicator currentSection={this.props.currentSection} />
+          <CurrentScreenIndicator
+            currentSection={this.props.currentSection}
+            sections={sections}
+            gotoScreen={this.gotoScreen}
+          />
         </nav>
       </main>
     );
