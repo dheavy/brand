@@ -19,7 +19,7 @@ const Form = props => {
           className="input-group-field"
           type="email"
           placeholder="Email"
-          defaultValue={props.inputValue}
+          value={props.inputValue}
           onChange={props.inputChange}
         />
         <div className="input-group-button small-20">
