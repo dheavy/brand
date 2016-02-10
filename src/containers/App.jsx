@@ -13,6 +13,7 @@ import React, {Component, PropTypes} from 'react';
 import * as LandingPageActions from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import submit from '../thunk/form';
 import {debounce} from 'lodash';
 import {List} from 'immutable';
 
@@ -73,8 +74,12 @@ class App extends Component {
     inputValue: PropTypes.string
   };
 
-  constructor(props) {
-    super(props);
+  static contextTypes = {
+    store: PropTypes.object
+  };
+
+  constructor(props, store) {
+    super(props, store);
     this.next = this.next.bind(this);
     this.gotoScreen = this.gotoScreen.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -116,7 +121,7 @@ class App extends Component {
 
   submitForm({email, formAction, formName}) {
     console.log({email, formAction, formName})
-    //this.props.actions.submitForm({email, formAction, formName});
+    this.context.store.dispatch(submit({email, formAction, formName}))
   }
 
   render() {
@@ -167,7 +172,6 @@ class App extends Component {
       </main>
     );
   }
-
 }
 
 export default connect(

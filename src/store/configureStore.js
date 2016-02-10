@@ -9,19 +9,9 @@ import reducer from '../reducers';
 import thunk from 'redux-thunk';
 import {Map} from 'immutable';
 
-const storeWithMiddleware = compose(
-  window.devToolsExtension ? window.devToolsExtension() : f => f,
-  applyMiddleware(thunk)
-)(createStore);
-
-export default function configureStore(initialState = null, sectionsFromJSON, configFromJSON) {
-  const store = storeWithMiddleware(
-    reducer,
-    initialState.merge(
-      sectionsFromJSON.merge(
-        configFromJSON
-      )
-    )
+export default function configureStore(initialState, sections, conf) {
+  const store = applyMiddleware(thunk)(createStore)(
+    reducer, initialState.merge(sections.merge(conf))
   );
 
   if (module.hot) {
