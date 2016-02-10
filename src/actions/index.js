@@ -5,8 +5,6 @@ import {
   UPDATE_INPUT_VALUE
 } from '../constants/ActionTypes';
 
-export submitForm from './form';
-
 export function updateInputValue(newValue) {
   return {type: UPDATE_INPUT_VALUE, inputValue: newValue};
 }
