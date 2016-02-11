@@ -38,9 +38,9 @@ const Form = props => {
               });
             }}
           />
-          <div className="error-message">{props.errorMessage}</div>
         </div>
       </div>
+      <div className="row error-message">{props.errorMessage}</div>
     </form>
   );
 }
