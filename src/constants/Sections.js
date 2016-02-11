@@ -19,7 +19,9 @@ export const INITIAL_STATE = Map({
   inputValue: '',
   request: Map({
     isEmailValid: false,
+    requestSuccessful: false,
     requestFailed: false,
+    fromForm: null,
     errorMessage: '',
     results: {}
   }),

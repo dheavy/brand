@@ -8,7 +8,8 @@ import fetchJsonp from 'fetch-jsonp';
 
 import {
   FORM_REQUEST_BEGIN,
-  FORM_REQUEST_END
+  FORM_REQUEST_SUCCESS,
+  FORM_REQUEST_ERROR
 } from '../constants/ActionTypes';
 
 function formRequestBegin({formName}) {
@@ -18,24 +19,35 @@ function formRequestBegin({formName}) {
   };
 }
 
-function formRequestEnd({formName, response}) {
+function formRequestSuccess(formName, message) {
   return {
-    type: FORM_REQUEST_END,
+    type: FORM_REQUEST_SUCCESS,
     formName: formName,
-    result: response.result,
-    msg: response.msg
   };
+}
+
+function formRequestError(formName, message) {
+  return {
+    type: FORM_REQUEST_ERROR,
+    formName: formName,
+    message: message
+  };
+}
+
+function action(formAction, email) {
+  return `${formAction}&EMAIL=${email}`;
 }
 
 export default function submitForm({email, formAction, formName}) {
   return dispatch => {
     dispatch(formRequestBegin({formName}));
 
-    return fetchJsonp(formAction, {method: 'GET', jsonpCallback: 'c'})
+    return fetchJsonp(action(formAction, email), {method: 'GET', jsonpCallback: 'c'})
       .then(response => response.json())
       .then(response => {
-        console.log('response', response);
-        dispatch(formRequestEnd({formName, response}));
+        response.result === 'success' ?
+          dispatch(formRequestSuccess(formName, response.msg)) :
+          dispatch(formRequestError(formName, response.msg));
       })
       .catch(error => console.log(error))
   };

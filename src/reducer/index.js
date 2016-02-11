@@ -1,13 +1,15 @@
 /**
  * MyPleasure | "brand"
  * --------------------
- * Main reducer.
+ * App reducer.
  */
 
 import {
   UPDATE_EMAIL_VALIDITY,
   UPDATE_INPUT_VALUE,
   WARN_INVALID_EMAIL,
+  FORM_REQUEST_SUCCESS,
+  FORM_REQUEST_ERROR,
   NEXT_SCREEN,
   GOTO_SCREEN,
   RESIZE
@@ -49,6 +51,26 @@ export default function landingPage(state = INITIAL_STATE, action) {
         request: state.get('request').merge(Map({
           isEmailValid: /(?:.+)@(?:.+){2,}\.(?:.+){2,}/.test(action.email),
           errorMessage: ''
+        }))
+      }));
+
+    case FORM_REQUEST_SUCCESS:
+      return state.merge(Map({
+        request: state.get('request').merge(Map({
+          isEmailValid: true,
+          errorMessage: '',
+          requestFailed: false,
+          requestSuccessful: true,
+          fromForm: action.formName
+        }))
+      }));
+
+    case FORM_REQUEST_ERROR:
+      return state.merge(Map({
+        request: state.get('request').merge(Map({
+          errorMessage: action.message,
+          requestFailed: true,
+          requestSuccessful: false
         }))
       }));
 
