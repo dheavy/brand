@@ -36,14 +36,18 @@ const size = (width, height, ratio) => {
 const videosrc = (video, format) => `videos/${video}.${format}`;
 const videotype = format => `video/${format}`
 
+let videoPoster;
+
 const FullscreenVideo = props => {
+  videoPoster = videoPoster || poster(props.posters);
+
   return (
     <video
       loop
       muted
       autoPlay={props.play}
       className="fullscreen"
-      poster={poster(props.posters)}
+      poster={videoPoster}
       style={size(props.width, props.height, props.aspectRatio)}
     >
       {!props.isMobile &&
