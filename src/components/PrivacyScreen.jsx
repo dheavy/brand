@@ -39,6 +39,8 @@ const PrivacyScreen = props => {
               inputValue={props.inputValue}
               inputChange={props.inputChange}
               submit={props.submitForm}
+              isEmailValid={props.formStatus.get('isEmailValid')}
+              errorMessage={props.formStatus.get('errorMessage')}
             />
           </div>
         </div>

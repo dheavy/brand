@@ -96,7 +96,7 @@ html, body {
       }
     }
 
-    h2 {
+    h2, .error-message {
       @include font-asap();
       @include font-size(18px);
       font-weight: 700;
@@ -104,6 +104,11 @@ html, body {
       @media only screen and (max-width: 40em) {
         @include font-size(14px);
       }
+    }
+
+    .error-message {
+      color: #FF0000;
+      margin-top: 20px;
     }
 
     .input-group-button {

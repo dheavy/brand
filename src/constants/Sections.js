@@ -18,8 +18,11 @@ export const INITIAL_STATE = Map({
   viewed: Set(),
   inputValue: '',
   request: Map({
-    isEmailInvalid: false,
+    isEmailValid: false,
     requestFailed: false,
+    errorMessage: '',
     results: {}
-  })
+  }),
+  errors: {},
+  thanks: {}
 });

@@ -33,8 +33,12 @@
       "title": "Let's get started",
       "subtitle": "Dig into hundreds of videos.",
       "cta": "I REALLY want my account, now!"
-    },
+    }
+  },
 
-    "ThankYou": {}
+  "thanks": {},
+
+  "errors": {
+    "invalidEmail": "Please enter a valid email"
   }
 }

@@ -26,6 +26,8 @@ const ProvidersScreen = props => {
             inputValue={props.inputValue}
             inputChange={props.inputChange}
             submit={props.submitForm}
+            isEmailValid={props.formStatus.get('isEmailValid')}
+            errorMessage={props.formStatus.get('errorMessage')}
           />
         </div>
         <div className="column providers-list small-centered small-20 medium-20 large-20">

@@ -16,6 +16,7 @@ const Form = props => {
     >
       <div className="input-group">
         <input
+          name={props.formData.inputName}
           className="input-group-field"
           type="email"
           placeholder="Email"
@@ -24,10 +25,10 @@ const Form = props => {
         />
         <div className="input-group-button small-20">
           <input
-            name={props.formData.inputName}
             type="submit"
             className="button"
             value={props.cta}
+            disabled={props.inputValue !== '' && props.isEmailValid === false}
             onClick={(e) => {
               e.preventDefault();
               props.submit({
@@ -37,6 +38,7 @@ const Form = props => {
               });
             }}
           />
+          <div className="error-message">{props.errorMessage}</div>
         </div>
       </div>
     </form>
@@ -50,7 +52,8 @@ Form.propTypes = {
   cta: PropTypes.string.isRequired,
   inputChange: PropTypes.func.isRequired,
   submit: PropTypes.func.isRequired,
-  inputValue: PropTypes.string
+  inputValue: PropTypes.string.isRequired,
+  isEmailValid: PropTypes.bool.isRequired
 };
 
 export default Form;

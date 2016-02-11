@@ -5,6 +5,7 @@
  */
 
 import {
+  UPDATE_EMAIL_VALIDITY,
   UPDATE_INPUT_VALUE,
   WARN_INVALID_EMAIL,
   NEXT_SCREEN,
@@ -43,10 +44,18 @@ export default function landingPage(state = INITIAL_STATE, action) {
     case UPDATE_INPUT_VALUE:
       return state.merge(Map({inputValue: action.inputValue}));
 
+    case UPDATE_EMAIL_VALIDITY:
+      return state.merge(Map({
+        request: state.get('request').merge(Map({
+          isEmailValid: /(?:.+)@(?:.+){2,}\.(?:.+){2,}/.test(action.email),
+          errorMessage: ''
+        }))
+      }));
+
     case WARN_INVALID_EMAIL:
       return state.merge(Map({
         request: state.get('request').merge(Map({
-          isEmailInvalid: true
+          errorMessage: action.errorMessage
         }))
       }));
 

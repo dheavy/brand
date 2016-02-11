@@ -22,6 +22,8 @@ function mapStateToProps(state) {
     currentSection: state.get('currentSection'),
     maxSections: state.get('maxSections'),
     sections: state.get('sections'),
+    thanks: state.get('thanks'),
+    errors: state.get('errors'),
     config: state.get('config'),
     viewed: state.get('viewed'),
     isMobile: state.get('isMobile'),
@@ -42,9 +44,9 @@ function mapDispatchToProps(dispatch) {
 // Merge props to add the 'viewed' value
 // (i.e. array referencing which screens have been viewed
 // and should be removed).
-function screenProps(props, inputValue, reqStatus, viewed, form, submitForm, inputChange) {
+function screenProps(props, inputValue, formStatus, viewed, form, submitForm, inputChange) {
   return Object.assign(
-    {}, props, {inputValue, reqStatus, viewed, form, submitForm, inputChange}
+    {}, props, {inputValue, formStatus, viewed, form, submitForm, inputChange}
   );
 }
 
@@ -120,13 +122,14 @@ class AppContainer extends Component {
   }
 
   inputChange(e) {
+    this.props.actions.updateEmailValidity(e.target.value);
     this.props.actions.updateInputValue(e.target.value);
   }
 
   submitForm({email, formAction, formName}) {
-    /(.+)@(.+){2,}\.(.+){2,}/.test(email) ?
+    this.props.request.get('isEmailValid') ?
       this.context.store.dispatch(submit({email, formAction, formName})) :
-      this.props.actions.warnInvalidEmail();
+      this.props.actions.warnInvalidEmail(this.props.errors.invalidEmail);
   }
 
   render() {
