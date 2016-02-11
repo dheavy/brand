@@ -5,10 +5,11 @@
  */
 
 import {
+  UPDATE_INPUT_VALUE,
+  WARN_INVALID_EMAIL,
   NEXT_SCREEN,
   GOTO_SCREEN,
-  RESIZE,
-  UPDATE_INPUT_VALUE
+  RESIZE
 } from '../constants/ActionTypes';
 
 import {
@@ -41,6 +42,13 @@ export default function landingPage(state = INITIAL_STATE, action) {
 
     case UPDATE_INPUT_VALUE:
       return state.merge(Map({inputValue: action.inputValue}));
+
+    case WARN_INVALID_EMAIL:
+      return state.merge(Map({
+        request: state.get('request').merge(Map({
+          isEmailInvalid: true
+        }))
+      }));
 
     default:
       return state;

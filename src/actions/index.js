@@ -1,8 +1,15 @@
+/**
+ * MyPleasure | "brand"
+ * --------------------
+ * Action creators.
+ */
+
 import {
+  UPDATE_INPUT_VALUE,
+  WARN_INVALID_EMAIL,
   NEXT_SCREEN,
   GOTO_SCREEN,
-  RESIZE,
-  UPDATE_INPUT_VALUE
+  RESIZE
 } from '../constants/ActionTypes';
 
 export function updateInputValue(newValue) {
@@ -19,4 +26,8 @@ export function resize({width, height}) {
 
 export function gotoScreen(id) {
   return {type: GOTO_SCREEN, id: id};
+}
+
+export function warnInvalidEmail() {
+  return {type: WARN_INVALID_EMAIL}
 }

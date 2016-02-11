@@ -1,3 +1,9 @@
+/**
+ * MyPleasure | "brand"
+ * --------------------
+ * Async action (thunk) for dealing with form request.
+ */
+
 import fetchJsonp from 'fetch-jsonp';
 
 import {
