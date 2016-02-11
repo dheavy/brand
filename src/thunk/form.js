@@ -31,7 +31,7 @@ export default function submitForm({email, formAction, formName}) {
   return dispatch => {
     dispatch(formRequestBegin({formName}));
 
-    return fetchJsonp(formAction, {method: 'GET'})
+    return fetchJsonp(formAction, {method: 'GET', jsonpCallback: 'c'})
       .then(response => response.json())
       .then(response => {
         console.log('response', response);
