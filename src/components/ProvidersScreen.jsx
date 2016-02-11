@@ -15,8 +15,8 @@ const ProvidersScreen = props => {
     <section className="screen providers" style={props.style}>
       <Logo />
       <div className="row center-full">
-        <h1 className="column small-centered small-20 medium-10 large-10 title">{props.title}</h1>
-        <h2 className="column small-centered small-20 medium-20 large-20 subtitle">{props.subtitle}</h2>
+        <h1 className="small-centered small-20 medium-10 large-10 title">{props.title}</h1>
+        <h2 className="small-centered small-20 medium-20 large-20 subtitle">{props.subtitle}</h2>
         <div className="row">
           <Form
             formName={`form-${props.id}`}

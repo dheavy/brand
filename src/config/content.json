@@ -33,10 +33,13 @@
       "title": "Let's get started",
       "subtitle": "Dig into hundreds of videos.",
       "cta": "I REALLY want my account, now!"
+    },
+
+    "ThankYouScreen": {
+      "title": "Thank you!",
+      "subtitle": "If you to learn more about the project, check out our posts on Medium!"
     }
   },
-
-  "thanks": {},
 
   "errors": {
     "invalidEmail": "Please enter a valid email"

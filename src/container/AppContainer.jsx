@@ -7,6 +7,7 @@
 import CurrentScreenIndicator from '../components/CurrentScreenIndicator';
 import ProvidersScreen from '../components/ProvidersScreen';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import ThankYouScreen from '../components/ThankYouScreen';
 import PrivacyScreen from '../components/PrivacyScreen';
 import VideoScreen from '../components/VideoScreen';
 import React, {Component, PropTypes} from 'react';
@@ -143,6 +144,7 @@ class AppContainer extends Component {
     return (
       <main>
         <section>
+          <ThankYouScreen visible={request.get('requestSuccessful')} texts={sections.ThankYouScreen} />
           <VideoScreen {
             ...screenProps(
               videoScreenProps(sections.VideoScreenEnd, isMobile, width, height, aspectRatio),

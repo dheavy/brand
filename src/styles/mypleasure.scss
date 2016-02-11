@@ -257,7 +257,7 @@ html, body {
         position: absolute;
         width: 485px;
         height: 870px;
-        background: url('../../dist/images/feed-background.png') top left no-repeat;
+        background: url(../../dist/images/feed-background.png) top left no-repeat;
         -webkit-transform: translate3d(0, 100%, 0);
         transform: translate3d(0, 100%, 0);
         transition: opacity 500ms cubic-bezier(0.215, 0.610, 0.355, 1.000), transform 2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -371,6 +371,30 @@ html, body {
         width: 155px;
         height: 40px;
         background-position: center;
+      }
+    }
+
+    &.thankyou {
+      text-align: center;
+      background-color: #FFFFFF;
+      background-image: url(../../dist/images/thankyou-background.jpg);
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+      transition: opacity 500ms;
+      @include prefix(opacity, 0);
+
+      .logo {
+        @include background-image('mypleasure-logo-black');
+      }
+
+      &.is-visible {
+        opacity: 1;
+        pointer-events: auto;
       }
     }
   }
