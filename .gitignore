@@ -36,4 +36,4 @@ dist/bundle.js
 .tmp
 
 # Form configuration
-src/config.json
+src/config/config.json

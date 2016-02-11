@@ -6,7 +6,7 @@
 
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
-import App from './containers/App';
+import AppContainer from './container/AppContainer';
 import {render} from 'react-dom';
 import {Map} from 'immutable';
 import React from 'react';
@@ -24,8 +24,8 @@ require('!style!css!sass!./styles/mypleasure.scss');
 const isMobile = document.getElementsByTagName('html')[0].classList.contains('mobile');
 const width = window.innerWidth;
 const height = window.innerHeight;
-const content = require('./content.json');
-const config = require('./config.json');
+const content = require('./config/content.json');
+const config = require('./config/config.json');
 const store = configureStore(
   INITIAL_STATE.merge({isMobile, width, height}),
   Map(content),
@@ -34,7 +34,7 @@ const store = configureStore(
 
 render(
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>,
   document.getElementById('root')
 );

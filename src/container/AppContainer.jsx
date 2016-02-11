@@ -64,7 +64,7 @@ function videoScreenProps(props, isMobile, width, height, aspectRatio) {
   return Object.assign({}, props, {posters, isMobile, width, height, aspectRatio});
 }
 
-class App extends Component {
+class AppContainer extends Component {
 
   static propTypes = {
     currentSection: PropTypes.number.isRequired,
@@ -177,4 +177,4 @@ class App extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(AppContainer);

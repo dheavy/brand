@@ -5,7 +5,7 @@
  */
 
 import {createStore, compose, applyMiddleware} from 'redux';
-import reducer from '../reducers';
+import reducer from '../reducer';
 import thunk from 'redux-thunk';
 import {Map} from 'immutable';
 
@@ -15,8 +15,8 @@ export default function configureStore(initialState, sections, conf) {
   );
 
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers');
+    module.hot.accept('../reducer', () => {
+      const nextReducer = require('../reducer');
       store.replaceReducer(nextReducer);
     });
   }
