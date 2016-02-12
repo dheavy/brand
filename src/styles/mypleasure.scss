@@ -280,7 +280,7 @@ html, body {
           @include prefix(opacity, 1);
 
           @media only screen and (max-width: 40em) {
-            transform: translate3d(0, -18%, 0);
+            transform: translate3d(0, -10%, 0);
           }
         }
       }
