@@ -105,6 +105,7 @@ class AppContainer extends Component {
     // It only works after the first screen is viewed.
     window.addEventListener('mousewheel', mouseWheelHandler);
     window.addEventListener('DOMMouseScroll', mouseWheelHandler);
+    window.addEventListener('touchmove', mouseWheelHandler);
 
     // Window resize triggers RESIZE Redux action.
     // Used by VideoScreen to ensure videos are covering the screen.
