@@ -94,15 +94,17 @@ class AppContainer extends Component {
   }
 
   componentWillMount() {
-    // Debounced mousewheel triggers NEXT_SCREEN Redux action.
-    // It only works after the first screen is viewed.
-    window.addEventListener('mousewheel', (debounce((e) => {
+    const mouseWheelHandler = (debounce((e) => {
       e.preventDefault();
-      if ((e.deltaX < 0 || e.deltaX === -0) &&
-          (this.props.viewed.size > 0 && this.props.viewed.size < this.props.maxSections)) {
+      if (this.props.viewed.size > 0 && this.props.viewed.size < this.props.maxSections) {
         this.next();
       }
-    }, 1000, {leading: true, trailing: false})).bind(this));
+    }, 1000, {leading: true, trailing: false})).bind(this);
+
+    // Debounced mousewheel triggers NEXT_SCREEN Redux action.
+    // It only works after the first screen is viewed.
+    window.addEventListener('mousewheel', mouseWheelHandler);
+    window.addEventListener('DOMMouseScroll', mouseWheelHandler);
 
     // Window resize triggers RESIZE Redux action.
     // Used by VideoScreen to ensure videos are covering the screen.
