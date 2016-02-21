@@ -250,6 +250,11 @@ html, body {
         }
       }
 
+      .input-group-field {
+        margin-left: -20px;
+        width: 100%;
+      }
+
       form {
         @media only screen and (max-width: 40em) {
           margin: 0 auto;

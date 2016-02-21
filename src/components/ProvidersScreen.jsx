@@ -21,7 +21,7 @@ const ProvidersScreen = props => {
           <Form
             formName={`form-${props.id}`}
             formData={props.form}
-            classNames={"column small-centered small-10 medium-9 large-6"}
+            classNames={"column small-centered small-15 medium-10 large-8"}
             cta={props.cta}
             inputValue={props.inputValue}
             inputChange={props.inputChange}

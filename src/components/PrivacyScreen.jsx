@@ -25,7 +25,7 @@ const PrivacyScreen = props => {
     <section className="screen privacy" style={props.style}>
       <Logo />
       <div className="row center-full">
-        <div className="column medium-8 large-8 medium-offset-1 large-offset-1">
+        <div className="column medium-9 large-9 medium-offset-1 large-offset-1">
           <div className="row">
             <h1>{props.title}</h1>
             <h2>{props.subtitle}</h2>
