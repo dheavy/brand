@@ -98,8 +98,7 @@ class AppContainer extends Component {
     // It only works after the first screen is viewed.
     window.addEventListener('mousewheel', (debounce((e) => {
       e.preventDefault();
-      if ((e.deltaX < 0 || e.deltaX === -0) &&
-          (this.props.viewed.size > 0 && this.props.viewed.size < this.props.maxSections)) {
+      if ((e.deltaX < 0 || e.deltaX === -0) && this.props.viewed.size < this.props.maxSections) {
         this.next();
       }
     }, 1000, {leading: true, trailing: false})).bind(this));
