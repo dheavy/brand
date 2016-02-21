@@ -94,6 +94,12 @@ class AppContainer extends Component {
   }
 
   componentWillMount() {
+    // Avoid FOUC by setting content visibility after a delay.
+    setTimeout(() => {
+      console.log('x')
+      document.getElementById('root').className += ' is-active';
+    }, 500);
+
     // Debounced mousewheel triggers NEXT_SCREEN Redux action.
     // It only works after the first screen is viewed.
     window.addEventListener('mousewheel', (debounce((e) => {
