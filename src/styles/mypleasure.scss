@@ -151,10 +151,11 @@ html, body {
       }
 
       .input-group-field {
-        margin-left: -20px;
+        width: 93%;
 
         @media only screen and (max-width: 40em) {
           margin-left: 0;
+          width: 100%;
         }
       }
 
