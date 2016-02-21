@@ -37,7 +37,7 @@
 
     "ThankYouScreen": {
       "title": "Thank you!",
-      "subtitle": "If you want to learn more about the project, check out our posts on Medium!"
+      "subtitle": "If you want to learn more about our project, check out our <a href=\"https://twitter.com/mypleasureteam\" target=\"_blank\">Twitter</a>!"
     }
   },
 

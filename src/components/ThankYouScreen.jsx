@@ -13,13 +13,19 @@ const classNames = isVisible => {
   return className;
 }
 
+function createMarkup(html) {
+  return {__html: html};
+}
+
 const ThankYouScreen = props => {
   return (
     <section className={classNames(props.visible)} style={props.style}>
       <Logo />
       <div className="row center-full">
         <h1 className="small-centered small-20 medium-10 large-10 title">{props.texts.title}</h1>
-        <h2 className="small-centered small-20 medium-10 large-10 subtitle">{props.texts.subtitle}</h2>
+        <h2 className="small-centered small-20 medium-6 large-6 subtitle"
+          dangerouslySetInnerHTML={createMarkup(props.texts.subtitle)}
+        />
       </div>
     </section>
   );
