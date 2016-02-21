@@ -18,6 +18,10 @@ import submit from '../thunk/form';
 import {debounce} from 'lodash';
 import {List} from 'immutable';
 
+let canUseWheel = true;
+let usingWheelDelay = 2000;
+let usingWheelTimer = null;
+
 function mapStateToProps(state) {
   return {
     currentSection: state.get('currentSection'),
@@ -91,28 +95,16 @@ class AppContainer extends Component {
     this.gotoScreen = this.gotoScreen.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.inputChange = this.inputChange.bind(this);
+    this.mouseWheelHandler = this.mouseWheelHandler.bind(this);
   }
 
   componentWillMount() {
     // Avoid FOUC by setting content visibility after a delay.
-    setTimeout(() => {
+    const start = () => {
       document.getElementById('main').className += ' is-active';
-    }, 500);
-
-    // Debounced mousewheel triggers NEXT_SCREEN Redux action.
-    // It only works after the first screen is viewed.
-    const mouseWheelHandler = (debounce((e) => {
-      e.preventDefault();
-      if (this.props.viewed.size < this.props.maxSections) {
-        this.next();
-      }
-    }, 250, {leading: true, trailing: false})).bind(this);
-
-    // Debounced mousewheel triggers NEXT_SCREEN Redux action.
-    // It only works after the first screen is viewed.
-    window.addEventListener('mousewheel', mouseWheelHandler);
-    window.addEventListener('DOMMouseScroll', mouseWheelHandler);
-    window.addEventListener('touchmove', mouseWheelHandler);
+      this.setWheelHandler();
+    }
+    setTimeout(start.bind(this), 500);
 
     // Window resize triggers RESIZE Redux action.
     // Used by VideoScreen to ensure videos are covering the screen.
@@ -122,6 +114,35 @@ class AppContainer extends Component {
         height: e.target.innerHeight
       });
     });
+  }
+
+  mouseWheelHandler(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if (canUseWheel) {
+      canUseWheel = false;
+      if (this.props.viewed.size < this.props.maxSections) {
+        this.next();
+        this.unsetWheelHandler();
+      }
+      usingWheelTimer = setTimeout(() => {
+        canUseWheel = true;
+        this.setWheelHandler();
+      }, usingWheelDelay);
+    }
+  }
+
+  setWheelHandler() {
+    // Triggers NEXT_SCREEN Redux action.
+    window.addEventListener('mousewheel', this.mouseWheelHandler);
+    window.addEventListener('DOMMouseScroll', this.mouseWheelHandler);
+    window.addEventListener('touchmove', this.mouseWheelHandler);
+  }
+
+  unsetWheelHandler() {
+    window.removeEventListener('mousewheel', this.mouseWheelHandler);
+    window.removeEventListener('DOMMouseScroll', this.mouseWheelHandler);
+    window.removeEventListener('touchmove', this.mouseWheelHandler);
   }
 
   next() {
