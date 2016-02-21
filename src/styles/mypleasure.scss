@@ -230,6 +230,12 @@ html, body {
       background-color: #FFFFFF;
       color: #1A1A1A;
 
+      @media only screen and (max-width: 40em) {
+        .logo {
+          display: none;
+        }
+      }
+
       .logo {
         @include background-image('mypleasure-logo-black');
       }
@@ -250,9 +256,17 @@ html, body {
         }
       }
 
-      .input-group-field {
-        margin-left: -20px;
-        width: 100%;
+      @media only screen and (max-width: 64em) {
+        .input-group-field {
+          margin-left: -20px;
+          width: 100%;
+        }
+      }
+
+      @media only screen and (max-width: 40em) {
+        .input-group-field {
+          margin-left: 0;
+        }
       }
 
       form {
@@ -305,6 +319,12 @@ html, body {
 
       h1, h2 {
         color: #FFFFFF;
+      }
+
+      @media only screen and (max-width: 40em) {
+        .logo {
+          display: none;
+        }
       }
 
       .title, .subtitle, .providers-list {
