@@ -106,6 +106,9 @@ class AppContainer extends Component {
     }
     setTimeout(start.bind(this), 500);
 
+    // Trigger first event on Mixpanel.
+    mixpanel.track('User lands on page.');
+
     // Window resize triggers RESIZE Redux action.
     // Used by VideoScreen to ensure videos are covering the screen.
     window.addEventListener('resize', (e) => {

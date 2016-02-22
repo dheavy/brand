@@ -13,9 +13,18 @@ const classNames = isVisible => {
   return className;
 }
 
-function createMarkup(html) {
+const activateLink = (html, link) => {
+  if (html.includes(link.keyword)) {
+    html = html.substr(0, html.indexOf(link.keyword) - 1)
+      + ` <a href="${link.href}" target="_blank" onclick="javascript:(function(){mixpanel.track('User clicked Twitter link.');ga('send', 'event', 'Twitter link', 'click')}())">${link.keyword}</a>`
+      + html.substr(html.indexOf(link.keyword) + link.keyword.length);
+  }
+  return html;
+};
+
+const createMarkup = html => {
   return {__html: html};
-}
+};
 
 const ThankYouScreen = props => {
   return (
@@ -24,7 +33,7 @@ const ThankYouScreen = props => {
       <div className="row center-full">
         <h1 className="small-centered small-20 medium-10 large-10 title">{props.texts.title}</h1>
         <h2 className="small-centered small-20 medium-6 large-6 subtitle"
-          dangerouslySetInnerHTML={createMarkup(props.texts.subtitle)}
+          dangerouslySetInnerHTML={createMarkup(activateLink(props.texts.subtitle, props.texts.link))}
         />
       </div>
     </section>
