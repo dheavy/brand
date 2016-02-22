@@ -440,9 +440,9 @@ html, body {
       width: 100%;
       height: 100%;
       z-index: 3;
-      //pointer-events: none;
+      pointer-events: none;
       transition: opacity 500ms;
-      @include prefix(opacity, 1);
+      @include prefix(opacity, 0);
 
       h1 {
         color: $color-mp-blue;
