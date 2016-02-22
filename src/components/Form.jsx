@@ -6,6 +6,14 @@
 
 import React, {PropTypes} from 'react';
 
+const iconError = display => {
+  let classNames = 'icon-problem';
+  if (display) {
+    classNames += ' is-visible';
+  }
+  return classNames;
+}
+
 const Form = props => {
   return (
     <form
@@ -15,6 +23,7 @@ const Form = props => {
       action={props.formData.action}
     >
       <div className="input-group">
+        <span className={iconError(!!props.errorMessage)} />
         <input
           name={props.formData.inputName}
           className="input-group-field"
@@ -40,7 +49,6 @@ const Form = props => {
           />
         </div>
       </div>
-      <div className="row error-message">{props.errorMessage}</div>
     </form>
   );
 }

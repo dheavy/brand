@@ -36,6 +36,31 @@ html, body {
     @include center(100%);
   }
 
+  .icon-problem {
+    position: relative;
+    display: inline-block;
+    margin-left: -45px;
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-top: 7px;
+    @include background-image('icon-problem');
+    background-repeat: no-repeat;
+    transition: 500ms opacity;
+    opacity: 0;
+
+    &.is-visible {
+      opacity: 1;
+    }
+
+    @media only screen and (max-width: 40em) {
+      margin-left: -30px;
+      margin-top: 13px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
   nav {
     @media only screen and (max-width: 40em) {
       display: none;
@@ -108,7 +133,7 @@ html, body {
       }
     }
 
-    h2, .error-message {
+    h2 {
       @include font-asap();
       @include font-size(18px);
       font-weight: 700;
@@ -116,12 +141,6 @@ html, body {
       @media only screen and (max-width: 40em) {
         @include font-size(14px);
       }
-    }
-
-    .error-message {
-      color: #FF0000;
-      margin-top: 20px;
-      text-align: center;
     }
 
     .input-group-button {
