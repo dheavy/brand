@@ -70,6 +70,10 @@ export default function landingPage(state = INITIAL_STATE, action) {
       }));
 
     case FORM_REQUEST_SUCCESS:
+      // Track which form transformed user.
+      const formId = parseInt(action.formName.substr(action.formName.length - 1));
+      mixpanel.track('User transformed!', {from_screen: sectionNames[formId]});
+
       return state.merge(Map({
         request: state.get('request').merge(Map({
           isEmailValid: true,
