@@ -22,6 +22,13 @@ import {
 
 import {Map, Set} from 'immutable';
 
+const sectionNames = [
+  '0 - First screen',
+  '1 - Enjoy your privacy',
+  '2 - Add videos from all around the web',
+  '3 - Last screen'
+];
+
 function range(to) {
   return Array.apply(null, Array(to)).map((_, i) => i);
 }
@@ -35,6 +42,14 @@ export default function landingPage(state = INITIAL_STATE, action) {
     // to the Set of `viewed` sections.
     case GOTO_SCREEN:
       const viewedSections = c => c === 0 ? [] : range(c);
+
+      // Track changes.
+      mixpanel.track('User changes screen.', {
+        from_screen: sectionNames[state.get('currentSection')],
+        to_screen: sectionNames[action.id]
+      });
+      ga('send', 'event', 'Screen change', 'change', '', action.id);
+
       return state.merge(Map({
         currentSection: Math.min(action.id, MAX_SECTIONS),
         viewed: Set(viewedSections(action.id))
